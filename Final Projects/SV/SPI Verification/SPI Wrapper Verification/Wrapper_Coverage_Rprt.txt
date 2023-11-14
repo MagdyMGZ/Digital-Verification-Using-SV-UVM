@@ -1,0 +1,2241 @@
+Coverage Report by instance with details
+
+=================================================================================
+=== Instance: /SPI_Master_tb/DUT/spislave/shift_reg
+=== Design Unit: work.SIPO
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         2         2         0   100.00%
+
+================================Branch Details================================
+
+Branch Coverage for instance /SPI_Master_tb/DUT/spislave/shift_reg
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File sipo.sv
+------------------------------------IF Branch------------------------------------
+    7                                         79     Count coming in to IF
+    7               1                         76         if(!SS_n)
+                                               3     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                       2         2         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /SPI_Master_tb/DUT/spislave/shift_reg --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File sipo.sv
+    1                                                module SIPO (clk,SS_n ,MOSI, rx_data); 
+    2                                                input  clk, MOSI,SS_n; 
+    3                                                output [9:0] rx_data; 
+    4                                                reg [9:0] tmp; 
+    5               1                         79       always @(posedge clk) 
+    6                                                  begin
+    7                                                    if(!SS_n)
+    8               1                         76             tmp = {tmp[8:0],MOSI}; 
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                         46        46         0   100.00%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /SPI_Master_tb/DUT/spislave/shift_reg --
+
+                                              Node      1H->0L      0L->1H                          "Coverage"
+                                              ---------------------------------------------------------------
+                                              MOSI           1           1                              100.00 
+                                              SS_n           1           1                              100.00 
+                                               clk           1           1                              100.00 
+                                      rx_data[0-9]           1           1                              100.00 
+                                          tmp[9-0]           1           1                              100.00 
+
+Total Node Count     =         23 
+Toggled Node Count   =         23 
+Untoggled Node Count =          0 
+
+Toggle Coverage      =     100.00% (46 of 46 bins)
+
+=================================================================================
+=== Instance: /SPI_Master_tb/DUT/spislave/counter
+=== Design Unit: work.up_counter
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         2         2         0   100.00%
+
+================================Branch Details================================
+
+Branch Coverage for instance /SPI_Master_tb/DUT/spislave/counter
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File counter.sv
+------------------------------------IF Branch------------------------------------
+    6                                         92     Count coming in to IF
+    6               1                         23     if(~rst_n||counter_up==4'd10)
+    8               1                         69     else
+Branch totals: 2 hits of 2 branches = 100.00%
+
+
+Condition Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Conditions                       2         2         0   100.00%
+
+================================Condition Details================================
+
+Condition Coverage for instance /SPI_Master_tb/DUT/spislave/counter --
+
+  File counter.sv
+----------------Focused Condition View-------------------
+Line       6 Item    1  (~rst_n || (counter_up == 10))
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+          Input Term   Covered  Reason for no coverage   Hint
+         -----------  --------  -----------------------  --------------
+               rst_n         Y
+  (counter_up == 10)         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  rst_n_0               -                             
+  Row   2:          1  rst_n_1               ~(counter_up == 10)           
+  Row   3:          1  (counter_up == 10)_0  rst_n                         
+  Row   4:          1  (counter_up == 10)_1  rst_n                         
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                       3         3         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /SPI_Master_tb/DUT/spislave/counter --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File counter.sv
+    1                                                module up_counter(input clk, rst_n, output[3:0] counter);
+    2                                                reg [3:0] counter_up;
+    3                                                
+    4               1                         92     always @(posedge clk or negedge rst_n)
+    5                                                begin
+    6                                                if(~rst_n||counter_up==4'd10)
+    7               1                         23      counter_up <= 4'd0;
+    8                                                else
+    9               1                         69      counter_up <= counter_up + 4'd1;
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                         20        20         0   100.00%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /SPI_Master_tb/DUT/spislave/counter --
+
+                                              Node      1H->0L      0L->1H                          "Coverage"
+                                              ---------------------------------------------------------------
+                                               clk           1           1                              100.00 
+                                      counter[0-3]           1           1                              100.00 
+                                   counter_up[3-0]           1           1                              100.00 
+                                             rst_n           1           1                              100.00 
+
+Total Node Count     =         10 
+Toggled Node Count   =         10 
+Untoggled Node Count =          0 
+
+Toggle Coverage      =     100.00% (20 of 20 bins)
+
+=================================================================================
+=== Instance: /SPI_Master_tb/DUT/spislave/shift_regII
+=== Design Unit: work.PISO
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         4         4         0   100.00%
+
+================================Branch Details================================
+
+Branch Coverage for instance /SPI_Master_tb/DUT/spislave/shift_regII
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File piso.sv
+------------------------------------IF Branch------------------------------------
+    11                                        63     Count coming in to IF
+    11              1                         30     	if (tx_valid) begin
+                                              33     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    12                                        30     Count coming in to IF
+    12              1                          4     		if (counter==0)
+    14              1                         26     		else begin
+Branch totals: 2 hits of 2 branches = 100.00%
+
+
+Condition Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Conditions                       1         1         0   100.00%
+
+================================Condition Details================================
+
+Condition Coverage for instance /SPI_Master_tb/DUT/spislave/shift_regII --
+
+  File piso.sv
+----------------Focused Condition View-------------------
+Line       12 Item    1  (counter == 0)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+      Input Term   Covered  Reason for no coverage   Hint
+     -----------  --------  -----------------------  --------------
+  (counter == 0)         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (counter == 0)_0      -                             
+  Row   2:          1  (counter == 0)_1      -                             
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                       4         4         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /SPI_Master_tb/DUT/spislave/shift_regII --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File piso.sv
+    1                                                module PISO(clk,tx_valid,counter,tx_data,dout);
+    2                                                
+    3                                                output reg dout;
+    4                                                input [7:0] tx_data;
+    5                                                input clk ;
+    6                                                input tx_valid ;
+    7                                                input [3:0] counter;
+    8                                                reg [7:0]temp;
+    9                                                
+    10              1                         63     always @ (posedge clk) begin
+    11                                               	if (tx_valid) begin
+    12                                               		if (counter==0)
+    13              1                          4     			temp <= tx_data;
+    14                                               		else begin
+    15              1                         26     			dout <= temp[7];
+    16              1                         26     			temp <= {temp[6:0],1'b0};
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                         46        11        35    23.91%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /SPI_Master_tb/DUT/spislave/shift_regII --
+
+                                              Node      1H->0L      0L->1H                          "Coverage"
+                                              ---------------------------------------------------------------
+                                               clk           1           1                              100.00 
+                                      counter[0-3]           1           1                              100.00 
+                                              dout           0           0                                0.00 
+                                         temp[7-0]           0           0                                0.00 
+                                      tx_data[0-7]           0           0                                0.00 
+                                          tx_valid           0           1                               50.00 
+
+Total Node Count     =         23 
+Toggled Node Count   =          5 
+Untoggled Node Count =         18 
+
+Toggle Coverage      =      23.91% (11 of 46 bins)
+
+=================================================================================
+=== Instance: /SPI_Master_tb/DUT/spislave
+=== Design Unit: work.SPI
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        36        27         9    75.00%
+
+================================Branch Details================================
+
+Branch Coverage for instance /SPI_Master_tb/DUT/spislave
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File SPI_SLAVE_AFTER.sv
+------------------------------------IF Branch------------------------------------
+    22                                        23     Count coming in to IF
+    22              1                          4      if (~rst_n)
+    24              1                         19      else
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------CASE Branch------------------------------------
+    29                                        22     Count coming in to CASE
+    30              1                         11       IDLE:
+    35              1                          5       CHK_CMD:
+    47              1                          4       WRITE:
+    54              1                          2       READ_ADD:
+    61              1                    ***0***       READ_DATA:
+    66              1                    ***0***     default: ns=IDLE;
+Branch totals: 4 hits of 6 branches = 66.66%
+
+------------------------------------IF Branch------------------------------------
+    31                                        11     Count coming in to IF
+    31              1                          5        if(SS_n==0)
+    33              1                          6        else
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    36                                         5     Count coming in to IF
+    36              1                          1        if(SS_n==1)
+    38              1                          2        else if (SS_n==0&&MOSI==0)
+    40              1                          1        else if (SS_n==0&&MOSI==1&&flag==0) begin
+    43              1                    ***0***        else if (SS_n==0&&MOSI==1&&flag==1) begin
+                                               1     All False Count
+Branch totals: 4 hits of 5 branches = 80.00%
+
+------------------------------------IF Branch------------------------------------
+    48                                         4     Count coming in to IF
+    48              1                          2        if(SS_n==1) begin
+    52              1                          2        else
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    55                                         2     Count coming in to IF
+    55              1                          1        if(SS_n==1) begin
+    59              1                          1        else
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    62                                   ***0***     Count coming in to IF
+    62              1                    ***0***        if(SS_n==1)
+    64              1                    ***0***        else
+Branch totals: 0 hits of 2 branches = 0.00%
+
+------------------------------------IF Branch------------------------------------
+    71                                        89     Count coming in to IF
+    71              1                         11     if(!rst_n)       //2nd bug : We should have reset default for the rx_valid & rx_data otherwise always 'x'
+    77              1                         78     else
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    79                                        78     Count coming in to IF
+    79              1                         15       if (ns==CHK_CMD) begin //3rd bug : The output logic is related by the 'ns' not the 'cs'
+    82              1                         63     else
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    84                                        78     Count coming in to IF
+    84              1                         21     if(cs==IDLE)
+                                              57     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    86                                        78     Count coming in to IF
+    86              1                         39     if (((cs==WRITE)||(cs==READ_ADD))&&(!SS_n)) begin 
+    93              1                          3     else if ((cs==WRITE||cs==READ_ADD)&&SS_n==1) begin
+    96              1                    ***0***     else if (cs==READ_DATA&&SS_n==0) begin
+    104             1                    ***0***     else if (cs==READ_DATA&&SS_n==1) begin
+                                              36     All False Count
+Branch totals: 3 hits of 5 branches = 60.00%
+
+------------------------------------IF Branch------------------------------------
+    87                                        39     Count coming in to IF
+    87              1                          3     if (counter_out == 4'd9 && (rx_flag==0)) begin
+                                              36     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    97                                   ***0***     Count coming in to IF
+    97              1                    ***0***     if (counter_out == 4'd9 &&(rx_flag==0)) begin
+                                         ***0***     All False Count
+Branch totals: 0 hits of 2 branches = 0.00%
+
+
+Condition Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Conditions                      24         9        15    37.50%
+
+================================Condition Details================================
+
+Condition Coverage for instance /SPI_Master_tb/DUT/spislave --
+
+  File SPI_SLAVE_AFTER.sv
+----------------Focused Condition View-------------------
+Line       38 Item    1  (SS_n ~| MOSI)
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+  Input Term   Covered  Reason for no coverage   Hint
+ -----------  --------  -----------------------  --------------
+        SS_n         N  '_1' not hit             Hit '_1'
+        MOSI         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  SS_n_0                ~MOSI                         
+  Row   2:    ***0***  SS_n_1                ~MOSI                         
+  Row   3:          1  MOSI_0                ~SS_n                         
+  Row   4:          1  MOSI_1                ~SS_n                         
+
+----------------Focused Condition View-------------------
+Line       40 Item    1  ((~SS_n && MOSI) && ~flag)
+Condition totals: 0 of 3 input terms covered = 0.00%
+
+  Input Term   Covered  Reason for no coverage   Hint
+ -----------  --------  -----------------------  --------------
+        SS_n         N  '_1' not hit             Hit '_1'
+        MOSI         N  '_0' not hit             Hit '_0'
+        flag         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  SS_n_0                (~flag && MOSI)               
+  Row   2:    ***0***  SS_n_1                -                             
+  Row   3:    ***0***  MOSI_0                ~SS_n                         
+  Row   4:          1  MOSI_1                (~flag && ~SS_n)              
+  Row   5:          1  flag_0                (~SS_n && MOSI)               
+  Row   6:    ***0***  flag_1                (~SS_n && MOSI)               
+
+----------------Focused Condition View-------------------
+Line       43 Item    1  ((~SS_n && MOSI) && flag)
+Condition totals: 0 of 3 input terms covered = 0.00%
+
+  Input Term   Covered  Reason for no coverage   Hint
+ -----------  --------  -----------------------  --------------
+        SS_n         N  No hits                  Hit '_0' and '_1'
+        MOSI         N  No hits                  Hit '_0' and '_1'
+        flag         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:    ***0***  SS_n_0                (flag && MOSI)                
+  Row   2:    ***0***  SS_n_1                -                             
+  Row   3:    ***0***  MOSI_0                ~SS_n                         
+  Row   4:    ***0***  MOSI_1                (flag && ~SS_n)               
+  Row   5:    ***0***  flag_0                (~SS_n && MOSI)               
+  Row   6:    ***0***  flag_1                (~SS_n && MOSI)               
+
+----------------Focused Condition View-------------------
+Line       79 Item    1  (ns == CHK_CMD)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+       Input Term   Covered  Reason for no coverage   Hint
+      -----------  --------  -----------------------  --------------
+  (ns == CHK_CMD)         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (ns == CHK_CMD)_0     -                             
+  Row   2:          1  (ns == CHK_CMD)_1     -                             
+
+----------------Focused Condition View-------------------
+Line       84 Item    1  (cs == IDLE)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+    Input Term   Covered  Reason for no coverage   Hint
+   -----------  --------  -----------------------  --------------
+  (cs == IDLE)         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (cs == IDLE)_0        -                             
+  Row   2:          1  (cs == IDLE)_1        -                             
+
+----------------Focused Condition View-------------------
+Line       86 Item    1  (((cs == WRITE) || (cs == READ_ADD)) && ~SS_n)
+Condition totals: 3 of 3 input terms covered = 100.00%
+
+        Input Term   Covered  Reason for no coverage   Hint
+       -----------  --------  -----------------------  --------------
+     (cs == WRITE)         Y
+  (cs == READ_ADD)         Y
+              SS_n         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (cs == WRITE)_0       ~(cs == READ_ADD)             
+  Row   2:          1  (cs == WRITE)_1       ~SS_n                         
+  Row   3:          1  (cs == READ_ADD)_0    ~(cs == WRITE)                
+  Row   4:          1  (cs == READ_ADD)_1    (~SS_n && ~(cs == WRITE))     
+  Row   5:          1  SS_n_0                ((cs == WRITE) || (cs == READ_ADD))
+  Row   6:          1  SS_n_1                ((cs == WRITE) || (cs == READ_ADD))
+
+----------------Focused Condition View-------------------
+Line       87 Item    1  ((counter_out == 9) && ~rx_flag)
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+          Input Term   Covered  Reason for no coverage   Hint
+         -----------  --------  -----------------------  --------------
+  (counter_out == 9)         Y
+             rx_flag         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (counter_out == 9)_0  -                             
+  Row   2:          1  (counter_out == 9)_1  ~rx_flag                      
+  Row   3:          1  rx_flag_0             (counter_out == 9)            
+  Row   4:    ***0***  rx_flag_1             (counter_out == 9)            
+
+----------------Focused Condition View-------------------
+Line       93 Item    1  (((cs == WRITE) || (cs == READ_ADD)) && SS_n)
+Condition totals: 2 of 3 input terms covered = 66.66%
+
+        Input Term   Covered  Reason for no coverage   Hint
+       -----------  --------  -----------------------  --------------
+     (cs == WRITE)         Y
+  (cs == READ_ADD)         Y
+              SS_n         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (cs == WRITE)_0       ~(cs == READ_ADD)             
+  Row   2:          1  (cs == WRITE)_1       SS_n                          
+  Row   3:          1  (cs == READ_ADD)_0    ~(cs == WRITE)                
+  Row   4:          1  (cs == READ_ADD)_1    (SS_n && ~(cs == WRITE))      
+  Row   5:    ***0***  SS_n_0                ((cs == WRITE) || (cs == READ_ADD))
+  Row   6:          1  SS_n_1                ((cs == WRITE) || (cs == READ_ADD))
+
+----------------Focused Condition View-------------------
+Line       96 Item    1  ((cs == READ_DATA) && ~SS_n)
+Condition totals: 0 of 2 input terms covered = 0.00%
+
+         Input Term   Covered  Reason for no coverage   Hint
+        -----------  --------  -----------------------  --------------
+  (cs == READ_DATA)         N  '_1' not hit             Hit '_1'
+               SS_n         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (cs == READ_DATA)_0   -                             
+  Row   2:    ***0***  (cs == READ_DATA)_1   ~SS_n                         
+  Row   3:    ***0***  SS_n_0                (cs == READ_DATA)             
+  Row   4:    ***0***  SS_n_1                (cs == READ_DATA)             
+
+----------------Focused Condition View-------------------
+Line       97 Item    1  ((counter_out == 9) && ~rx_flag)
+Condition totals: 0 of 2 input terms covered = 0.00%
+
+          Input Term   Covered  Reason for no coverage   Hint
+         -----------  --------  -----------------------  --------------
+  (counter_out == 9)         N  No hits                  Hit '_0' and '_1'
+             rx_flag         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:    ***0***  (counter_out == 9)_0  -                             
+  Row   2:    ***0***  (counter_out == 9)_1  ~rx_flag                      
+  Row   3:    ***0***  rx_flag_0             (counter_out == 9)            
+  Row   4:    ***0***  rx_flag_1             (counter_out == 9)            
+
+----------------Focused Condition View-------------------
+Line       104 Item    1  ((cs == READ_DATA) && SS_n)
+Condition totals: 0 of 2 input terms covered = 0.00%
+
+         Input Term   Covered  Reason for no coverage   Hint
+        -----------  --------  -----------------------  --------------
+  (cs == READ_DATA)         N  '_1' not hit             Hit '_1'
+               SS_n         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (cs == READ_DATA)_0   -                             
+  Row   2:    ***0***  (cs == READ_DATA)_1   SS_n                          
+  Row   3:    ***0***  SS_n_0                (cs == READ_DATA)             
+  Row   4:    ***0***  SS_n_1                (cs == READ_DATA)             
+
+
+FSM Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    FSM States                       5         4         1    80.00%
+    FSM Transitions                  8         6         2    75.00%
+
+================================FSM Details================================
+
+FSM Coverage for instance /SPI_Master_tb/DUT/spislave --
+
+FSM_ID: cs
+    Current State Object : cs
+    ----------------------
+    State Value MapInfo :
+    ---------------------
+Line          State Name               Value
+----          ----------               -----
+  30                IDLE                   0
+  35             CHK_CMD                   1
+  61           READ_DATA                   4
+  54            READ_ADD                   3
+  47               WRITE                   2
+    Covered States :
+    ----------------
+                   State           Hit_count
+                   -----           ---------
+                    IDLE                  12          
+                 CHK_CMD                   5          
+                READ_ADD                   2          
+                   WRITE                   4          
+    Covered Transitions :
+    ---------------------
+Line            Trans_ID           Hit_count          Transition          
+----            --------           ---------          ----------          
+  32                   0                   4          IDLE -> CHK_CMD               
+  41                   2                   1          CHK_CMD -> READ_ADD           
+  39                   3                   2          CHK_CMD -> WRITE              
+  37                   4                   1          CHK_CMD -> IDLE               
+  56                   6                   1          READ_ADD -> IDLE              
+  49                   7                   2          WRITE -> IDLE                 
+    Uncovered States :
+    ------------------
+                   State
+                   -----
+               READ_DATA
+    Uncovered Transitions :
+    -----------------------
+Line            Trans_ID          Transition          
+----            --------          ----------          
+  44                   1          CHK_CMD -> READ_DATA
+  63                   5          READ_DATA -> IDLE   
+
+
+    Summary                       Bins      Hits    Misses  Coverage
+    -------                       ----      ----    ------  --------
+        FSM States                   5         4         1    80.00%
+        FSM Transitions              8         6         2    75.00%
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                      36        26        10    72.22%
+
+================================Statement Details================================
+
+Statement Coverage for instance /SPI_Master_tb/DUT/spislave --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File SPI_SLAVE_AFTER.sv
+    2                                                module SPI (MOSI,MISO,SS_n,clk,rst_n,rx_valid,rx_data,tx_valid,tx_data);
+    3                                                input MOSI,SS_n,clk,rst_n,tx_valid;
+    4                                                input [7:0]tx_data;
+    5                                                output reg MISO,rx_valid;
+    6                                                output reg [9:0]rx_data;
+    7                                                reg rx_flag;
+    8                                                //additional signals needed during operation
+    9                                                reg flag,counter_rst_n;
+    10                                               state_e cs,ns; //Replaced it for a more readable transitions
+    11                                               wire dout;
+    12                                               wire [9:0]din;
+    13                                               wire [3:0]counter_out;
+    14                                               //SIPO instan.
+    15                                               SIPO shift_reg(clk,rx_valid,MOSI,din);
+    16                                               //up_counter piso instan.
+    17                                               up_counter counter(clk,counter_rst_n,counter_out);
+    18                                               //PISO instan.
+    19                                               PISO shift_regII(clk,tx_valid,counter_out,tx_data,dout);
+    20                                               //state memory
+    21              1                         23     always @(posedge clk or negedge rst_n) begin
+    22                                                if (~rst_n)
+    23              1                          4        cs <= IDLE;
+    24                                                else
+    25              1                         19        cs <= ns;
+    26                                               end
+    27                                               //next state logic
+    28              1                         22     always @(cs,SS_n) begin //1st bug : MOSI is included in the sensitivity list 
+    29                                               case(cs)
+    30                                                 IDLE:
+    31                                                  if(SS_n==0)
+    32              1                          5          ns=CHK_CMD;
+    33                                                  else
+    34              1                          6          ns=IDLE;
+    35                                                 CHK_CMD:
+    36                                                  if(SS_n==1)
+    37              1                          1          ns=IDLE;
+    38                                                  else if (SS_n==0&&MOSI==0)
+    39              1                          2          ns=WRITE;
+    40                                                  else if (SS_n==0&&MOSI==1&&flag==0) begin
+    41              1                          1          ns=READ_ADD;
+    42                                                  end
+    43                                                  else if (SS_n==0&&MOSI==1&&flag==1) begin
+    44              1                    ***0***          ns=READ_DATA;
+    45              1                    ***0***          flag=0;
+    46                                                  end
+    47                                                 WRITE:
+    48                                                  if(SS_n==1) begin
+    49              1                          2          ns=IDLE;
+    50              1                          2          flag=0;
+    51                                                  end
+    52                                                  else
+    53              1                          2          ns=WRITE;
+    54                                                 READ_ADD:
+    55                                                  if(SS_n==1) begin
+    56              1                          1          ns=IDLE;
+    57              1                          1          flag=1;
+    58                                                  end
+    59                                                  else
+    60              1                          1          ns=READ_ADD;
+    61                                                 READ_DATA:
+    62                                                  if(SS_n==1)
+    63              1                    ***0***          ns=IDLE;
+    64                                                  else
+    65              1                    ***0***          ns=READ_DATA;
+    66              1                    ***0***     default: ns=IDLE;
+    67                                               endcase
+    68                                               end
+    69                                               //output logic
+    70              1                         89     always @(posedge clk or negedge rst_n) begin
+    71                                               if(!rst_n)       //2nd bug : We should have reset default for the rx_valid & rx_data otherwise always 'x'
+    72                                               begin                 
+    73              1                         11     rx_valid<=0;
+    74              1                         11     rx_data<=0;  
+    75              1                         11     MISO<=0;              
+    76                                               end
+    77                                               else
+    78                                               begin
+    79                                                 if (ns==CHK_CMD) begin //3rd bug : The output logic is related by the 'ns' not the 'cs'
+    80              1                         15     counter_rst_n <= 1'b0;
+    81                                               end
+    82                                               else
+    83              1                         63     counter_rst_n <= 1'b1;
+    84                                               if(cs==IDLE)
+    85              1                         21     rx_flag=0;
+    86                                               if (((cs==WRITE)||(cs==READ_ADD))&&(!SS_n)) begin 
+    87                                               if (counter_out == 4'd9 && (rx_flag==0)) begin
+    88              1                          3     rx_valid<=1;
+    89              1                          3     rx_data<=din;
+    90              1                          3     rx_flag=1;
+    91                                               end
+    92                                               end
+    93                                               else if ((cs==WRITE||cs==READ_ADD)&&SS_n==1) begin
+    94              1                          3     rx_valid<=0;
+    95                                               end
+    96                                               else if (cs==READ_DATA&&SS_n==0) begin
+    97                                               if (counter_out == 4'd9 &&(rx_flag==0)) begin
+    98              1                    ***0***     rx_valid<=1;
+    99              1                    ***0***     rx_data<=din;
+    100             1                    ***0***     rx_flag=1;
+    101                                              end
+    102             1                    ***0***     MISO <= dout;
+    103                                              end
+    104                                              else if (cs==READ_DATA&&SS_n==1) begin
+    105             1                    ***0***     rx_valid<=0;
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                         96        65        31    67.70%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /SPI_Master_tb/DUT/spislave --
+
+                                              Node      1H->0L      0L->1H                          "Coverage"
+                                              ---------------------------------------------------------------
+                                              MISO           0           0                                0.00 
+                                              MOSI           1           1                              100.00 
+                                              SS_n           1           1                              100.00 
+                                               clk           1           1                              100.00 
+                                  counter_out[0-3]           1           1                              100.00 
+                                     counter_rst_n           1           1                              100.00 
+                                                cs               ENUM type       Value       Count 
+                                                                      IDLE           4      100.00 
+                                                                   CHK_CMD           4      100.00 
+                                                                     WRITE           2      100.00 
+                                                                  READ_ADD           1      100.00 
+                                                                 READ_DATA           0        0.00 
+                                          din[0-9]           1           1                              100.00 
+                                              dout           0           0                                0.00 
+                                              flag           1           1                              100.00 
+                                                ns               ENUM type       Value       Count 
+                                                                      IDLE           5      100.00 
+                                                                   CHK_CMD           5      100.00 
+                                                                     WRITE           2      100.00 
+                                                                  READ_ADD           1      100.00 
+                                                                 READ_DATA           0        0.00 
+                                             rst_n           0           1                               50.00 
+                                      rx_data[9-8]           0           1                               50.00 
+                                      rx_data[7-6]           1           1                              100.00 
+                                        rx_data[5]           0           1                               50.00 
+                                        rx_data[4]           1           1                              100.00 
+                                      rx_data[3-0]           0           1                               50.00 
+                                           rx_flag           1           1                              100.00 
+                                          rx_valid           1           1                              100.00 
+                                      tx_data[0-7]           0           0                                0.00 
+                                          tx_valid           0           1                               50.00 
+
+Total Node Count     =         53 
+Toggled Node Count   =         32 
+Untoggled Node Count =         21 
+
+Toggle Coverage      =      67.70% (65 of 96 bins)
+
+=================================================================================
+=== Instance: /SPI_Master_tb/DUT/mem
+=== Design Unit: work.SPI_RAM_AFTER
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         8         5         3    62.50%
+
+================================Branch Details================================
+
+Branch Coverage for instance /SPI_Master_tb/DUT/mem
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File SPI_RAM_AFTER.sv
+------------------------------------IF Branch------------------------------------
+    11                                         9     Count coming in to IF
+    11              1                          2     	if (!rst_n) begin
+    20              1                          3     	else if (rx_valid) begin
+                                               4     All False Count
+Branch totals: 3 hits of 3 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    21                                         3     Count coming in to IF
+    21              1                          1     		if (din[9:8] == 2'b00) begin
+    25              1                    ***0***     		else if (din[9:8] == 2'b01) begin
+    29              1                    ***0***     		else if (din[9:8] == 2'b10) begin
+    33              1                          2     		else if (din[9:8] == 2'b11) begin
+    37              1                    ***0***     		else begin
+Branch totals: 2 hits of 5 branches = 40.00%
+
+
+Condition Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Conditions                       4         1         3    25.00%
+
+================================Condition Details================================
+
+Condition Coverage for instance /SPI_Master_tb/DUT/mem --
+
+  File SPI_RAM_AFTER.sv
+----------------Focused Condition View-------------------
+Line       21 Item    1  (din[9:8] == 0)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+       Input Term   Covered  Reason for no coverage   Hint
+      -----------  --------  -----------------------  --------------
+  (din[9:8] == 0)         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (din[9:8] == 0)_0     -                             
+  Row   2:          1  (din[9:8] == 0)_1     -                             
+
+----------------Focused Condition View-------------------
+Line       25 Item    1  (din[9:8] == 1)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+       Input Term   Covered  Reason for no coverage   Hint
+      -----------  --------  -----------------------  --------------
+  (din[9:8] == 1)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (din[9:8] == 1)_0     -                             
+  Row   2:    ***0***  (din[9:8] == 1)_1     -                             
+
+----------------Focused Condition View-------------------
+Line       29 Item    1  (din[9:8] == 2)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+       Input Term   Covered  Reason for no coverage   Hint
+      -----------  --------  -----------------------  --------------
+  (din[9:8] == 2)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (din[9:8] == 2)_0     -                             
+  Row   2:    ***0***  (din[9:8] == 2)_1     -                             
+
+----------------Focused Condition View-------------------
+Line       33 Item    1  (din[9:8] == 3)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+       Input Term   Covered  Reason for no coverage   Hint
+      -----------  --------  -----------------------  --------------
+  (din[9:8] == 3)         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:    ***0***  (din[9:8] == 3)_0     -                             
+  Row   2:          1  (din[9:8] == 3)_1     -                             
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                      18        12         6    66.66%
+
+================================Statement Details================================
+
+Statement Coverage for instance /SPI_Master_tb/DUT/mem --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File SPI_RAM_AFTER.sv
+    1                                                module SPI_RAM_AFTER (din, rx_valid, dout, tx_valid, clk, rst_n);
+    2                                                parameter MEM_DEPTH = 256;
+    3                                                parameter ADDR_SIZE = 8;
+    4                                                input rx_valid, clk, rst_n;
+    5                                                input [9:0] din;
+    6                                                output reg tx_valid;
+    7                                                output reg [7:0] dout;
+    8                                                reg [ADDR_SIZE-1:0] addr_rd, addr_wr;
+    9                                                reg [7:0] mem [MEM_DEPTH-1:0];
+    10              1                          9     always @(posedge clk or negedge rst_n) begin
+    11                                               	if (!rst_n) begin
+    12              1                          2     		for (int i = 0 ; i < MEM_DEPTH ; i = i + 1) begin
+    12              2                        512     
+    13              1                        512     			mem [i] <= 0;
+    14                                               		end
+    15              1                          2     		dout <= 0;
+    16              1                          2     		tx_valid <= 0;
+    17              1                          2     		addr_rd <= 0;
+    18              1                          2     		addr_wr <= 0;
+    19                                               	end
+    20                                               	else if (rx_valid) begin
+    21                                               		if (din[9:8] == 2'b00) begin
+    22              1                          1     			addr_wr <= din[7:0];
+    23              1                          1     			tx_valid <= 0;
+    24                                               		end
+    25                                               		else if (din[9:8] == 2'b01) begin
+    26              1                    ***0***     			mem [addr_wr] <= din[7:0];
+    27              1                    ***0***     			tx_valid <= 0;
+    28                                               		end
+    29                                               		else if (din[9:8] == 2'b10) begin
+    30              1                    ***0***     			addr_rd <= din[7:0];
+    31              1                    ***0***     			tx_valid <= 0;
+    32                                               		end
+    33                                               		else if (din[9:8] == 2'b11) begin
+    34              1                          2     			dout <= mem[addr_rd];
+    35              1                          2     			tx_valid <= 1;
+    36                                               		end
+    37                                               		else begin
+    38              1                    ***0***     			dout <= 0;
+    39              1                    ***0***     			tx_valid <= 0;
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                         76        23        53    30.26%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /SPI_Master_tb/DUT/mem --
+
+                                              Node      1H->0L      0L->1H                          "Coverage"
+                                              ---------------------------------------------------------------
+                                      addr_rd[7-0]           0           0                                0.00 
+                                      addr_wr[7-5]           0           1                               50.00 
+                                        addr_wr[4]           0           0                                0.00 
+                                        addr_wr[3]           0           1                               50.00 
+                                      addr_wr[2-0]           0           0                                0.00 
+                                               clk           1           1                              100.00 
+                                          din[0-3]           0           1                               50.00 
+                                            din[4]           1           1                              100.00 
+                                            din[5]           0           1                               50.00 
+                                          din[6-7]           1           1                              100.00 
+                                          din[8-9]           0           1                               50.00 
+                                         dout[7-0]           0           0                                0.00 
+                                             rst_n           0           1                               50.00 
+                                          rx_valid           1           1                              100.00 
+                                          tx_valid           0           1                               50.00 
+
+Total Node Count     =         38 
+Toggled Node Count   =          5 
+Untoggled Node Count =         33 
+
+Toggle Coverage      =      30.26% (23 of 76 bins)
+
+=================================================================================
+=== Instance: /SPI_Master_tb/DUT
+=== Design Unit: work.spi_wrapper
+=================================================================================
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                         50        23        27    46.00%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /SPI_Master_tb/DUT --
+
+                                              Node      1H->0L      0L->1H                          "Coverage"
+                                              ---------------------------------------------------------------
+                                               clk           1           1                              100.00 
+                                              miso           0           0                                0.00 
+                                              mosi           1           1                              100.00 
+                                             rst_n           0           1                               50.00 
+                                      rx_data[0-3]           0           1                               50.00 
+                                        rx_data[4]           1           1                              100.00 
+                                        rx_data[5]           0           1                               50.00 
+                                      rx_data[6-7]           1           1                              100.00 
+                                      rx_data[8-9]           0           1                               50.00 
+                                          rx_valid           1           1                              100.00 
+                                              ss_n           1           1                              100.00 
+                                      tx_data[0-7]           0           0                                0.00 
+                                          tx_valid           0           1                               50.00 
+
+Total Node Count     =         25 
+Toggled Node Count   =          7 
+Untoggled Node Count =         18 
+
+Toggle Coverage      =      46.00% (23 of 50 bins)
+
+=================================================================================
+=== Instance: /SPI_Master_tb/DUT_GOLD/SPI_Slave_inst
+=== Design Unit: work.SPI_Slave_Interface
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        41        39         2    95.12%
+
+================================Branch Details================================
+
+Branch Coverage for instance /SPI_Master_tb/DUT_GOLD/SPI_Slave_inst
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File GOLD_SPI_Slave_Interface.sv
+------------------------------------IF Branch------------------------------------
+    30                                        24     Count coming in to IF
+    30              1                          4         if (~rst_n)
+    32              1                         20         else
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------CASE Branch------------------------------------
+    38                                        47     Count coming in to CASE
+    39              1                         12             IDLE : 
+    46              1                          6             CHK_CMD : 
+    59              1                         15             WRITE : 
+    66              1                          6             READ_ADD : 
+    73              1                          7             READ_DATA : 
+    80              1                          1             default : ns = IDLE; // To Avoid Latches for the uncovered state encoding cases
+Branch totals: 6 hits of 6 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    41                                        12     Count coming in to IF
+    41              1                          7                     if (SS_n)
+    43              1                          5                     else
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    48                                         6     Count coming in to IF
+    48              1                    ***0***                     if (SS_n)
+    51              1                          3                     if (~MOSI)
+    54              1                          2                     if (~rd_addr_recieved)
+    56              1                          1                     else
+Branch totals: 3 hits of 4 branches = 75.00%
+
+------------------------------------IF Branch------------------------------------
+    61                                        15     Count coming in to IF
+    61              1                          2                     if (SS_n)
+    63              1                         13                     else
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    68                                         6     Count coming in to IF
+    68              1                          1                     if (SS_n)
+    70              1                          5                     else
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    75                                         7     Count coming in to IF
+    75              1                          1                     if (SS_n)
+    77              1                          6                     else
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    88                                        69     Count coming in to IF
+    88              1                          3         if (~rst_n) begin
+    95              1                         66         else begin
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------CASE Branch------------------------------------
+    96                                        66     Count coming in to CASE
+    97              1                          9                 IDLE :
+    103             1                          4                 CHK_CMD :
+    108             1                         22                 WRITE :
+    119             1                         11                 READ_ADD :
+    130             1                         20                 READ_DATA :
+                                         ***0***     All False Count
+Branch totals: 5 hits of 6 branches = 83.33%
+
+------------------------------------IF Branch------------------------------------
+    110                                       22     Count coming in to IF
+    110             1                         20                         if (counter <= 9) begin
+                                               2     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    115                                       22     Count coming in to IF
+    115             1                          4                         if (counter >= 9) begin
+                                              18     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    121                                       11     Count coming in to IF
+    121             1                         10                         if (counter <= 9) begin
+                                               1     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    127                                       11     Count coming in to IF
+    127             1                          2                         if (counter >= 9)
+                                               9     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    132                                       20     Count coming in to IF
+    132             1                          8                         if(tx_valid && counter >= 3) begin
+    137             1                         11                         if(counter <= 9) begin
+                                               1     All False Count
+Branch totals: 3 hits of 3 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    143                                       20     Count coming in to IF
+    143             1                          4                         if(counter >= 9) begin
+                                              16     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+
+Condition Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Conditions                       8         8         0   100.00%
+
+================================Condition Details================================
+
+Condition Coverage for instance /SPI_Master_tb/DUT_GOLD/SPI_Slave_inst --
+
+  File GOLD_SPI_Slave_Interface.sv
+----------------Focused Condition View-------------------
+Line       110 Item    1  (counter <= 9)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+      Input Term   Covered  Reason for no coverage   Hint
+     -----------  --------  -----------------------  --------------
+  (counter <= 9)         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (counter <= 9)_0      -                             
+  Row   2:          1  (counter <= 9)_1      -                             
+
+----------------Focused Condition View-------------------
+Line       115 Item    1  (counter >= 9)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+      Input Term   Covered  Reason for no coverage   Hint
+     -----------  --------  -----------------------  --------------
+  (counter >= 9)         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (counter >= 9)_0      -                             
+  Row   2:          1  (counter >= 9)_1      -                             
+
+----------------Focused Condition View-------------------
+Line       121 Item    1  (counter <= 9)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+      Input Term   Covered  Reason for no coverage   Hint
+     -----------  --------  -----------------------  --------------
+  (counter <= 9)         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (counter <= 9)_0      -                             
+  Row   2:          1  (counter <= 9)_1      -                             
+
+----------------Focused Condition View-------------------
+Line       127 Item    1  (counter >= 9)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+      Input Term   Covered  Reason for no coverage   Hint
+     -----------  --------  -----------------------  --------------
+  (counter >= 9)         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (counter >= 9)_0      -                             
+  Row   2:          1  (counter >= 9)_1      -                             
+
+----------------Focused Condition View-------------------
+Line       132 Item    1  (tx_valid && (counter >= 3))
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+      Input Term   Covered  Reason for no coverage   Hint
+     -----------  --------  -----------------------  --------------
+        tx_valid         Y
+  (counter >= 3)         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  tx_valid_0            -                             
+  Row   2:          1  tx_valid_1            (counter >= 3)                
+  Row   3:          1  (counter >= 3)_0      tx_valid                      
+  Row   4:          1  (counter >= 3)_1      tx_valid                      
+
+----------------Focused Condition View-------------------
+Line       137 Item    1  (counter <= 9)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+      Input Term   Covered  Reason for no coverage   Hint
+     -----------  --------  -----------------------  --------------
+  (counter <= 9)         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (counter <= 9)_0      -                             
+  Row   2:          1  (counter <= 9)_1      -                             
+
+----------------Focused Condition View-------------------
+Line       143 Item    1  (counter >= 9)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+      Input Term   Covered  Reason for no coverage   Hint
+     -----------  --------  -----------------------  --------------
+  (counter >= 9)         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (counter >= 9)_0      -                             
+  Row   2:          1  (counter >= 9)_1      -                             
+
+
+FSM Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    FSM States                       5         5         0   100.00%
+    FSM Transitions                  8         7         1    87.50%
+
+================================FSM Details================================
+
+FSM Coverage for instance /SPI_Master_tb/DUT_GOLD/SPI_Slave_inst --
+
+FSM_ID: cs
+    Current State Object : cs
+    ----------------------
+    State Value MapInfo :
+    ---------------------
+Line          State Name               Value
+----          ----------               -----
+  39                IDLE                   0
+  46             CHK_CMD                   1
+  73           READ_DATA                   4
+  66            READ_ADD                   3
+  59               WRITE                   2
+    Covered States :
+    ----------------
+                   State           Hit_count
+                   -----           ---------
+                    IDLE                  12          
+                 CHK_CMD                   4          
+               READ_DATA                   2          
+                READ_ADD                   2          
+                   WRITE                   4          
+    Covered Transitions :
+    ---------------------
+Line            Trans_ID           Hit_count          Transition          
+----            --------           ---------          ----------          
+  44                   0                   4          IDLE -> CHK_CMD               
+  57                   1                   1          CHK_CMD -> READ_DATA          
+  55                   2                   1          CHK_CMD -> READ_ADD           
+  52                   3                   2          CHK_CMD -> WRITE              
+  76                   5                   1          READ_DATA -> IDLE             
+  69                   6                   1          READ_ADD -> IDLE              
+  62                   7                   2          WRITE -> IDLE                 
+    Uncovered Transitions :
+    -----------------------
+Line            Trans_ID          Transition          
+----            --------          ----------          
+  49                   4          CHK_CMD -> IDLE     
+
+
+    Summary                       Bins      Hits    Misses  Coverage
+    -------                       ----      ----    ------  --------
+        FSM States                   5         5         0   100.00%
+        FSM Transitions              8         7         1    87.50%
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                      44        43         1    97.72%
+
+================================Statement Details================================
+
+Statement Coverage for instance /SPI_Master_tb/DUT_GOLD/SPI_Slave_inst --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File GOLD_SPI_Slave_Interface.sv
+    3                                                module SPI_Slave_Interface (MOSI,MISO,SS_n,clk,rst_n,rx_data,rx_valid,tx_data,tx_valid);
+    4                                                
+    5                                                // Parameters State Declaration
+    6                                                parameter IDLE = 3'b000;
+    7                                                parameter CHK_CMD = 3'b001;
+    8                                                parameter WRITE = 3'b010;
+    9                                                parameter READ_ADD = 3'b011;
+    10                                               parameter READ_DATA = 3'b100;
+    11                                               
+    12                                               // Input Declaration
+    13                                               input MOSI, SS_n, clk, rst_n, tx_valid;
+    14                                               input [7:0] tx_data;
+    15                                               // rst_n -> Active Low ASYNC (Make The RAM in Device Implementation as A Group of Flip-Flops)
+    16                                               // rst_n -> Active Low SYNC (Make The RAM in Device Implementation as A RAM BLOCK)
+    17                                               // So We Choose rst_n to be Active Low SYNC
+    18                                               
+    19                                               // Output Declaration
+    20                                               output reg MISO, rx_valid;
+    21                                               output reg [9:0] rx_data;
+    22                                               
+    23                                               reg [2:0] cs, ns; // cs -> Current State , ns -> Next State
+    24                                               reg[3:0] counter; // Counter to track Serial to Parallel conversion and Parallel to Serial
+    25                                               // To Check that the Read Address Comes First and Read Data Comes Second
+    26                                               reg rd_addr_recieved; // Signal to track if read adress is recieved. Initially no read address is received
+    27                                               
+    28                                               // State Memory Logic
+    29              1                         24     always @(posedge clk) begin
+    30                                                   if (~rst_n)
+    31              1                          4             cs <= IDLE;
+    32                                                   else
+    33              1                         20             cs <= ns;
+    34                                               end
+    35                                               
+    36                                               // Next State Logic
+    37              1                         47     always @(*) begin
+    38                                                   case (cs)
+    39                                                       IDLE : 
+    40                                                           begin
+    41                                                               if (SS_n)
+    42              1                          7                         ns = IDLE;
+    43                                                               else
+    44              1                          5                         ns = CHK_CMD;
+    45                                                           end
+    46                                                       CHK_CMD : 
+    47                                                           begin
+    48                                                               if (SS_n)
+    49              1                    ***0***                         ns = IDLE;
+    50                                                               else
+    51                                                               if (~MOSI)
+    52              1                          3                         ns = WRITE;
+    53                                                               else
+    54                                                               if (~rd_addr_recieved)
+    55              1                          2                         ns = READ_ADD;
+    56                                                               else
+    57              1                          1                         ns = READ_DATA;
+    58                                                           end
+    59                                                       WRITE : 
+    60                                                           begin
+    61                                                               if (SS_n)
+    62              1                          2                         ns = IDLE;
+    63                                                               else
+    64              1                         13                         ns = WRITE;
+    65                                                           end
+    66                                                       READ_ADD : 
+    67                                                           begin
+    68                                                               if (SS_n)
+    69              1                          1                         ns = IDLE;
+    70                                                               else
+    71              1                          5                         ns = READ_ADD;
+    72                                                           end
+    73                                                       READ_DATA : 
+    74                                                           begin
+    75                                                               if (SS_n)
+    76              1                          1                         ns = IDLE;
+    77                                                               else
+    78              1                          6                         ns = READ_DATA;
+    79                                                           end
+    80              1                          1             default : ns = IDLE; // To Avoid Latches for the uncovered state encoding cases
+    81                                                   endcase
+    82                                               end
+    83                                               
+    84                                               // Output Logic Convert MOSI From Serial to Parallel For Communication
+    85                                               // Output Logic Convert MISO From Parallel to Serial For Communication
+    86                                               
+    87              1                         69     always @(posedge clk) begin
+    88                                                   if (~rst_n) begin
+    89              1                          3             rx_data <= 0;
+    90              1                          3             rx_valid <= 0;
+    91              1                          3             rd_addr_recieved <= 0;
+    92              1                          3             MISO <= 0;
+    93              1                          3             counter <= 0;
+    94                                                   end
+    95                                                   else begin
+    96                                                       case (cs)
+    97                                                           IDLE :
+    98                                                               begin
+    99              1                          9                         counter <= 0;
+    100             1                          9                         rx_valid <= 0;
+    101             1                          9                         MISO <= 0;
+    102                                                              end
+    103                                                          CHK_CMD :
+    104                                                              begin
+    105             1                          4                         counter <= 0;
+    106             1                          4                         rx_valid <= 0;
+    107                                                              end
+    108                                                          WRITE :
+    109                                                              begin
+    110                                                                  if (counter <= 9) begin
+    111             1                         20                             rx_data <= {rx_data[8:0],MOSI};
+    112             1                         20                             rx_valid <= 0;
+    113             1                         20                             counter <= counter + 1;
+    114                                                                  end
+    115                                                                  if (counter >= 9) begin
+    116             1                          4                             rx_valid <= 1;
+    117                                                                  end
+    118                                                              end
+    119                                                          READ_ADD :
+    120                                                              begin
+    121                                                                  if (counter <= 9) begin
+    122             1                         10                             rx_data <= {rx_data[8:0],MOSI};
+    123             1                         10                             rx_valid <= 0;
+    124             1                         10                             rd_addr_recieved <= 1;
+    125             1                         10                             counter <= counter + 1;
+    126                                                                  end
+    127                                                                  if (counter >= 9)
+    128             1                          2                             rx_valid <= 1;
+    129                                                              end
+    130                                                          READ_DATA :
+    131                                                              begin
+    132                                                                  if(tx_valid && counter >= 3) begin
+    133             1                          8                             MISO <= tx_data[counter - 3];
+    134             1                          8                             counter <= counter - 1;
+    135                                                                  end
+    136                                                                  else 
+    137                                                                  if(counter <= 9) begin
+    138             1                         11                             rx_data <= {rx_data[8:0],MOSI}; // recieved bits are MSB TO LSB
+    139             1                         11                             rx_valid <= 0;
+    140             1                         11                             counter <= counter + 1;
+    141                                                                  end
+    142                                                                  // After the Conversion of last bit instantly Rasie rx_valid to High
+    143                                                                  if(counter >= 9) begin
+    144             1                          4                             rx_valid <= 1;
+    145             1                          4                             rd_addr_recieved <= 0;
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                         72        53        19    73.61%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /SPI_Master_tb/DUT_GOLD/SPI_Slave_inst --
+
+                                              Node      1H->0L      0L->1H                          "Coverage"
+                                              ---------------------------------------------------------------
+                                              MISO           0           0                                0.00 
+                                              MOSI           1           1                              100.00 
+                                              SS_n           1           1                              100.00 
+                                               clk           1           1                              100.00 
+                                      counter[3-0]           1           1                              100.00 
+                                           cs[2-0]           1           1                              100.00 
+                                           ns[2-0]           1           1                              100.00 
+                                  rd_addr_recieved           1           1                              100.00 
+                                             rst_n           0           1                               50.00 
+                                      rx_data[9-0]           1           1                              100.00 
+                                          rx_valid           1           1                              100.00 
+                                      tx_data[0-7]           0           0                                0.00 
+                                          tx_valid           1           1                              100.00 
+
+Total Node Count     =         36 
+Toggled Node Count   =         26 
+Untoggled Node Count =         10 
+
+Toggle Coverage      =      73.61% (53 of 72 bins)
+
+=================================================================================
+=== Instance: /SPI_Master_tb/DUT_GOLD/RAM_inst
+=== Design Unit: work.Single_Port_Async_RAM
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        11        10         1    90.90%
+
+================================Branch Details================================
+
+Branch Coverage for instance /SPI_Master_tb/DUT_GOLD/RAM_inst
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File GOLD_Single_Port_Async_RAM.sv
+------------------------------------IF Branch------------------------------------
+    21                                        49     Count coming in to IF
+    21              1                          2         if (~rst_n) begin
+    30              1                         47         else begin
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    31                                        47     Count coming in to IF
+    31              1                          2             tx_valid <= (din[9] & din[8] & rx_valid)? 1 : 0;
+    31              2                         45             tx_valid <= (din[9] & din[8] & rx_valid)? 1 : 0;
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    32                                        47     Count coming in to IF
+    32              1                          8             if (rx_valid) begin
+                                              39     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------CASE Branch------------------------------------
+    33                                         8     Count coming in to CASE
+    34              1                          2                     2'b00 : Wr_Addr <= din[7:0];      // Write Address
+    35              1                          2                     2'b01 : RAM[Wr_Addr] <= din[7:0]; // Write Data
+    36              1                          2                     2'b10 : Rd_Addr <= din[7:0];      // Read Address
+    37              1                          2                     2'b11 : dout <= RAM[Rd_Addr];     // Read Data
+                                         ***0***     All False Count
+Branch totals: 4 hits of 5 branches = 80.00%
+
+
+Condition Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Conditions                       3         3         0   100.00%
+
+================================Condition Details================================
+
+Condition Coverage for instance /SPI_Master_tb/DUT_GOLD/RAM_inst --
+
+  File GOLD_Single_Port_Async_RAM.sv
+----------------Focused Condition View-------------------
+Line       31 Item    1  ((din[9] & din[8]) & rx_valid)
+Condition totals: 3 of 3 input terms covered = 100.00%
+
+  Input Term   Covered  Reason for no coverage   Hint
+ -----------  --------  -----------------------  --------------
+      din[9]         Y
+      din[8]         Y
+    rx_valid         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  din[9]_0              (rx_valid && din[8])          
+  Row   2:          1  din[9]_1              (rx_valid && din[8])          
+  Row   3:          1  din[8]_0              (rx_valid && din[9])          
+  Row   4:          1  din[8]_1              (rx_valid && din[9])          
+  Row   5:          1  rx_valid_0            (din[9] & din[8])             
+  Row   6:          1  rx_valid_1            (din[9] & din[8])             
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                      13        13         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /SPI_Master_tb/DUT_GOLD/RAM_inst --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File GOLD_Single_Port_Async_RAM.sv
+    3                                                module Single_Port_Async_RAM (din,clk,rst_n,rx_valid,dout,tx_valid);
+    4                                                
+    5                                                parameter MEM_DEPTH = 256;
+    6                                                parameter ADDR_SIZE = 8;
+    7                                                
+    8                                                input [9:0] din;
+    9                                                input clk, rx_valid, rst_n; // rst_n -> Active Low SYNC
+    10                                               
+    11                                               output reg [7:0] dout;
+    12                                               output reg tx_valid;
+    13                                               
+    14                                               reg [7:0] RAM [MEM_DEPTH - 1 : 0];
+    15                                               
+    16                                               // Two Address One for Read & One for Write
+    17                                               reg [ADDR_SIZE - 1 : 0] Wr_Addr, Rd_Addr;
+    18                                               
+    19                                               // always block that specialized for holding read / write address
+    20              1                         49     always @(posedge clk) begin
+    21                                                   if (~rst_n) begin
+    22              1                          2             for (int i = 0 ; i < MEM_DEPTH ; i = i + 1) begin
+    22              2                        512     
+    23              1                        512     			RAM [i] <= 0;
+    24                                               		end
+    25              1                          2             dout <= 0;
+    26              1                          2             tx_valid <= 0;
+    27              1                          2             Wr_Addr <= 0;
+    28              1                          2             Rd_Addr <= 0;
+    29                                                   end
+    30                                                   else begin
+    31              1                         47             tx_valid <= (din[9] & din[8] & rx_valid)? 1 : 0;
+    32                                                       if (rx_valid) begin
+    33                                                           case (din[9:8])
+    34              1                          2                     2'b00 : Wr_Addr <= din[7:0];      // Write Address
+    35              1                          2                     2'b01 : RAM[Wr_Addr] <= din[7:0]; // Write Data
+    36              1                          2                     2'b10 : Rd_Addr <= din[7:0];      // Read Address
+    37              1                          2                     2'b11 : dout <= RAM[Rd_Addr];     // Read Data
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                         76        35        41    46.05%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /SPI_Master_tb/DUT_GOLD/RAM_inst --
+
+                                              Node      1H->0L      0L->1H                          "Coverage"
+                                              ---------------------------------------------------------------
+                                        Rd_Addr[7]           0           0                                0.00 
+                                      Rd_Addr[6-3]           0           1                               50.00 
+                                      Rd_Addr[2-0]           0           0                                0.00 
+                                        Wr_Addr[7]           0           0                                0.00 
+                                      Wr_Addr[6-5]           0           1                               50.00 
+                                        Wr_Addr[4]           0           0                                0.00 
+                                        Wr_Addr[3]           0           1                               50.00 
+                                        Wr_Addr[2]           0           0                                0.00 
+                                        Wr_Addr[1]           0           1                               50.00 
+                                        Wr_Addr[0]           0           0                                0.00 
+                                               clk           1           1                              100.00 
+                                          din[0-9]           1           1                              100.00 
+                                         dout[7-0]           0           0                                0.00 
+                                             rst_n           0           1                               50.00 
+                                          rx_valid           1           1                              100.00 
+                                          tx_valid           1           1                              100.00 
+
+Total Node Count     =         38 
+Toggled Node Count   =         13 
+Untoggled Node Count =         25 
+
+Toggle Coverage      =      46.05% (35 of 76 bins)
+
+=================================================================================
+=== Instance: /SPI_Master_tb/DUT_GOLD
+=== Design Unit: work.SPI_Wrapper_GOLD
+=================================================================================
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                         50        31        19    62.00%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /SPI_Master_tb/DUT_GOLD --
+
+                                              Node      1H->0L      0L->1H                          "Coverage"
+                                              ---------------------------------------------------------------
+                                              MISO           0           0                                0.00 
+                                              MOSI           1           1                              100.00 
+                                              SS_n           1           1                              100.00 
+                                               clk           1           1                              100.00 
+                                             rst_n           0           1                               50.00 
+                                  rx_data_din[0-9]           1           1                              100.00 
+                                          rx_valid           1           1                              100.00 
+                                 tx_data_dout[0-7]           0           0                                0.00 
+                                          tx_valid           1           1                              100.00 
+
+Total Node Count     =         25 
+Toggled Node Count   =         15 
+Untoggled Node Count =         10 
+
+Toggle Coverage      =      62.00% (31 of 50 bins)
+
+=================================================================================
+=== Instance: /SPI_Master_tb
+=== Design Unit: work.SPI_Master_tb
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        18         9         9    50.00%
+
+================================Branch Details================================
+
+Branch Coverage for instance /SPI_Master_tb
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File SPI_WRAPPER_TB.sv
+------------------------------------IF Branch------------------------------------
+    36                                         5     Count coming in to IF
+    36              1                    ***0***             if ((DUT.spislave.cs !== 0) && (DUT.mem.dout !== 0) && (DUT.mem.tx_valid !== 0) && (DUT.mem.addr_rd !== 0) && (DUT.mem.addr_wr !== 0)) begin
+    40              1                          5             else begin
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    66                                         1     Count coming in to IF
+    66              1                    ***0***         if (DUT.mem.addr_wr == wr_add) begin
+    70              1                          1         else begin
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    97                                         1     Count coming in to IF
+    97              1                    ***0***         if (DUT.mem.mem[DUT.mem.addr_wr] == wr_data) begin
+    101             1                          1         else begin
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    127                                        1     Count coming in to IF
+    127             1                    ***0***         if (DUT.mem.addr_rd == rd_add) begin
+    131             1                          1         else begin
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    161                                        1     Count coming in to IF
+    161             1                          1         if (DUT.mem.mem[DUT.mem.addr_rd] == rd_data) begin
+    165             1                    ***0***         else begin
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    179                                        5     Count coming in to IF
+    179             1                    ***0***         if ((DUT.spislave.cs !== DUT_GOLD.SPI_Slave_inst.cs) && (DUT.mem.dout !== DUT_GOLD.RAM_inst.dout) && (DUT.mem.tx_valid !== DUT_GOLD.RAM_inst.tx_valid) && (DUT.mem.addr_rd !== DUT_GOLD.RAM_inst.Rd_Addr) && (DUT.mem.addr_wr !== DUT_GOLD.RAM_inst.Wr_Addr)) begin
+    183             1                          5         else begin
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    191                                        4     Count coming in to IF
+    191             1                    ***0***         if (MISO !== MISO_EXP) begin
+    195             1                          4         else begin
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    203                                        4     Count coming in to IF
+    203             1                    ***0***         if ((DUT_GOLD.SPI_Slave_inst.MISO !== DUT.spislave.MISO) && (DUT_GOLD.SPI_Slave_inst.rx_valid !== DUT.spislave.rx_valid) && (DUT_GOLD.SPI_Slave_inst.rx_data !== DUT.spislave.rx_data)) begin
+    207             1                          4         else begin
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    215                                        4     Count coming in to IF
+    215             1                    ***0***         if ((DUT_GOLD.RAM_inst.dout !== DUT.mem.dout) && (DUT_GOLD.RAM_inst.tx_valid !== DUT.mem.tx_valid)) begin
+    219             1                          4         else begin
+Branch totals: 1 hit of 2 branches = 50.00%
+
+
+Condition Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Conditions                      20         0        20     0.00%
+
+================================Condition Details================================
+
+Condition Coverage for instance /SPI_Master_tb --
+
+  File SPI_WRAPPER_TB.sv
+----------------Focused Condition View-------------------
+Line       36 Item    1  (((((DUT.spislave.cs !== 0) && (DUT.mem.dout !== 0)) && (DUT.mem.tx_valid !== 1'b0)) && (DUT.mem.addr_rd !== 0)) && (DUT.mem.addr_wr !== 0))
+Condition totals: 0 of 5 input terms covered = 0.00%
+
+                   Input Term   Covered  Reason for no coverage   Hint
+                  -----------  --------  -----------------------  --------------
+      (DUT.spislave.cs !== 0)         N  '_1' not hit             Hit '_1'
+         (DUT.mem.dout !== 0)         N  No hits                  Hit '_0' and '_1'
+  (DUT.mem.tx_valid !== 1'b0)         N  No hits                  Hit '_0' and '_1'
+      (DUT.mem.addr_rd !== 0)         N  No hits                  Hit '_0' and '_1'
+      (DUT.mem.addr_wr !== 0)         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target                     Non-masking condition(s)      
+ ---------  ---------  --------------------           -------------------------     
+  Row   1:          1  (DUT.spislave.cs !== 0)_0      -                             
+  Row   2:    ***0***  (DUT.spislave.cs !== 0)_1      ((DUT.mem.addr_wr !== 0) && (DUT.mem.addr_rd !== 0) && (DUT.mem.tx_valid !== 1'b0) && (DUT.mem.dout !== 0))
+  Row   3:    ***0***  (DUT.mem.dout !== 0)_0         (DUT.spislave.cs !== 0)       
+  Row   4:    ***0***  (DUT.mem.dout !== 0)_1         ((DUT.mem.addr_wr !== 0) && (DUT.mem.addr_rd !== 0) && (DUT.mem.tx_valid !== 1'b0) && (DUT.spislave.cs !== 0))
+  Row   5:    ***0***  (DUT.mem.tx_valid !== 1'b0)_0  ((DUT.spislave.cs !== 0) && (DUT.mem.dout !== 0))
+  Row   6:    ***0***  (DUT.mem.tx_valid !== 1'b0)_1  ((DUT.mem.addr_wr !== 0) && (DUT.mem.addr_rd !== 0) && ((DUT.spislave.cs !== 0) && (DUT.mem.dout !== 0)))
+  Row   7:    ***0***  (DUT.mem.addr_rd !== 0)_0      (((DUT.spislave.cs !== 0) && (DUT.mem.dout !== 0)) && (DUT.mem.tx_valid !== 1'b0))
+  Row   8:    ***0***  (DUT.mem.addr_rd !== 0)_1      ((DUT.mem.addr_wr !== 0) && (((DUT.spislave.cs !== 0) && (DUT.mem.dout !== 0)) && (DUT.mem.tx_valid !== 1'b0)))
+  Row   9:    ***0***  (DUT.mem.addr_wr !== 0)_0      ((((DUT.spislave.cs !== 0) && (DUT.mem.dout !== 0)) && (DUT.mem.tx_valid !== 1'b0)) && (DUT.mem.addr_rd !== 0))
+ Row   10:    ***0***  (DUT.mem.addr_wr !== 0)_1      ((((DUT.spislave.cs !== 0) && (DUT.mem.dout !== 0)) && (DUT.mem.tx_valid !== 1'b0)) && (DUT.mem.addr_rd !== 0))
+
+----------------Focused Condition View-------------------
+Line       66 Item    1  (DUT.mem.addr_wr == wr_add)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                   Input Term   Covered  Reason for no coverage   Hint
+                  -----------  --------  -----------------------  --------------
+  (DUT.mem.addr_wr == wr_add)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                     Non-masking condition(s)      
+ ---------  ---------  --------------------           -------------------------     
+  Row   1:          1  (DUT.mem.addr_wr == wr_add)_0  -                             
+  Row   2:    ***0***  (DUT.mem.addr_wr == wr_add)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       97 Item    1  (DUT.mem.mem[DUT.mem.addr_wr] == wr_data)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                                 Input Term   Covered  Reason for no coverage   Hint
+                                -----------  --------  -----------------------  --------------
+  (DUT.mem.mem[DUT.mem.addr_wr] == wr_data)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                                   Non-masking condition(s)      
+ ---------  ---------  --------------------                         -------------------------     
+  Row   1:          1  (DUT.mem.mem[DUT.mem.addr_wr] == wr_data)_0  -                             
+  Row   2:    ***0***  (DUT.mem.mem[DUT.mem.addr_wr] == wr_data)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       127 Item    1  (DUT.mem.addr_rd == rd_add)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                   Input Term   Covered  Reason for no coverage   Hint
+                  -----------  --------  -----------------------  --------------
+  (DUT.mem.addr_rd == rd_add)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                     Non-masking condition(s)      
+ ---------  ---------  --------------------           -------------------------     
+  Row   1:          1  (DUT.mem.addr_rd == rd_add)_0  -                             
+  Row   2:    ***0***  (DUT.mem.addr_rd == rd_add)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       161 Item    1  (DUT.mem.mem[DUT.mem.addr_rd] == rd_data)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                                 Input Term   Covered  Reason for no coverage   Hint
+                                -----------  --------  -----------------------  --------------
+  (DUT.mem.mem[DUT.mem.addr_rd] == rd_data)         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target                                   Non-masking condition(s)      
+ ---------  ---------  --------------------                         -------------------------     
+  Row   1:    ***0***  (DUT.mem.mem[DUT.mem.addr_rd] == rd_data)_0  -                             
+  Row   2:          1  (DUT.mem.mem[DUT.mem.addr_rd] == rd_data)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       179 Item    1  (((((DUT.spislave.cs !== DUT_GOLD.SPI_Slave_inst.cs) && (DUT.mem.dout !== DUT_GOLD.RAM_inst.dout)) && (DUT.mem.tx_valid !== DUT_GOLD.RAM_inst.tx_valid)) && (DUT.mem.addr_rd !== DUT_GOLD.RAM_inst.Rd_Addr)) && (DUT.mem.addr_wr !== DUT_GOLD.RAM_inst.Wr_Addr))
+Condition totals: 0 of 5 input terms covered = 0.00%
+
+                                         Input Term   Covered  Reason for no coverage   Hint
+                                        -----------  --------  -----------------------  --------------
+   (DUT.spislave.cs !== DUT_GOLD.SPI_Slave_inst.cs)         N  '_1' not hit             Hit '_1'
+          (DUT.mem.dout !== DUT_GOLD.RAM_inst.dout)         N  No hits                  Hit '_0' and '_1'
+  (DUT.mem.tx_valid !== DUT_GOLD.RAM_inst.tx_valid)         N  No hits                  Hit '_0' and '_1'
+    (DUT.mem.addr_rd !== DUT_GOLD.RAM_inst.Rd_Addr)         N  No hits                  Hit '_0' and '_1'
+    (DUT.mem.addr_wr !== DUT_GOLD.RAM_inst.Wr_Addr)         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target                                           Non-masking condition(s)      
+ ---------  ---------  --------------------                                 -------------------------     
+  Row   1:          1  (DUT.spislave.cs !== DUT_GOLD.SPI_Slave_inst.cs)_0   -                             
+  Row   2:    ***0***  (DUT.spislave.cs !== DUT_GOLD.SPI_Slave_inst.cs)_1   ((DUT.mem.addr_wr !== DUT_GOLD.RAM_inst.Wr_Addr) && (DUT.mem.addr_rd !== DUT_GOLD.RAM_inst.Rd_Addr) && (DUT.mem.tx_valid !== DUT_GOLD.RAM_inst.tx_valid) && (DUT.mem.dout !== DUT_GOLD.RAM_inst.dout))
+  Row   3:    ***0***  (DUT.mem.dout !== DUT_GOLD.RAM_inst.dout)_0          (DUT.spislave.cs !== DUT_GOLD.SPI_Slave_inst.cs)
+  Row   4:    ***0***  (DUT.mem.dout !== DUT_GOLD.RAM_inst.dout)_1          ((DUT.mem.addr_wr !== DUT_GOLD.RAM_inst.Wr_Addr) && (DUT.mem.addr_rd !== DUT_GOLD.RAM_inst.Rd_Addr) && (DUT.mem.tx_valid !== DUT_GOLD.RAM_inst.tx_valid) && (DUT.spislave.cs !== DUT_GOLD.SPI_Slave_inst.cs))
+  Row   5:    ***0***  (DUT.mem.tx_valid !== DUT_GOLD.RAM_inst.tx_valid)_0  ((DUT.spislave.cs !== DUT_GOLD.SPI_Slave_inst.cs) && (DUT.mem.dout !== DUT_GOLD.RAM_inst.dout))
+  Row   6:    ***0***  (DUT.mem.tx_valid !== DUT_GOLD.RAM_inst.tx_valid)_1  ((DUT.mem.addr_wr !== DUT_GOLD.RAM_inst.Wr_Addr) && (DUT.mem.addr_rd !== DUT_GOLD.RAM_inst.Rd_Addr) && ((DUT.spislave.cs !== DUT_GOLD.SPI_Slave_inst.cs) && (DUT.mem.dout !== DUT_GOLD.RAM_inst.dout)))
+  Row   7:    ***0***  (DUT.mem.addr_rd !== DUT_GOLD.RAM_inst.Rd_Addr)_0    (((DUT.spislave.cs !== DUT_GOLD.SPI_Slave_inst.cs) && (DUT.mem.dout !== DUT_GOLD.RAM_inst.dout)) && (DUT.mem.tx_valid !== DUT_GOLD.RAM_inst.tx_valid))
+  Row   8:    ***0***  (DUT.mem.addr_rd !== DUT_GOLD.RAM_inst.Rd_Addr)_1    ((DUT.mem.addr_wr !== DUT_GOLD.RAM_inst.Wr_Addr) && (((DUT.spislave.cs !== DUT_GOLD.SPI_Slave_inst.cs) && (DUT.mem.dout !== DUT_GOLD.RAM_inst.dout)) && (DUT.mem.tx_valid !== DUT_GOLD.RAM_inst.tx_valid)))
+  Row   9:    ***0***  (DUT.mem.addr_wr !== DUT_GOLD.RAM_inst.Wr_Addr)_0    ((((DUT.spislave.cs !== DUT_GOLD.SPI_Slave_inst.cs) && (DUT.mem.dout !== DUT_GOLD.RAM_inst.dout)) && (DUT.mem.tx_valid !== DUT_GOLD.RAM_inst.tx_valid)) && (DUT.mem.addr_rd !== DUT_GOLD.RAM_inst.Rd_Addr))
+ Row   10:    ***0***  (DUT.mem.addr_wr !== DUT_GOLD.RAM_inst.Wr_Addr)_1    ((((DUT.spislave.cs !== DUT_GOLD.SPI_Slave_inst.cs) && (DUT.mem.dout !== DUT_GOLD.RAM_inst.dout)) && (DUT.mem.tx_valid !== DUT_GOLD.RAM_inst.tx_valid)) && (DUT.mem.addr_rd !== DUT_GOLD.RAM_inst.Rd_Addr))
+
+----------------Focused Condition View-------------------
+Line       191 Item    1  (MISO !== MISO_EXP)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+           Input Term   Covered  Reason for no coverage   Hint
+          -----------  --------  -----------------------  --------------
+  (MISO !== MISO_EXP)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target             Non-masking condition(s)      
+ ---------  ---------  --------------------   -------------------------     
+  Row   1:          1  (MISO !== MISO_EXP)_0  -                             
+  Row   2:    ***0***  (MISO !== MISO_EXP)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       203 Item    1  (((DUT_GOLD.SPI_Slave_inst.MISO !== DUT.spislave.MISO) && (DUT_GOLD.SPI_Slave_inst.rx_valid !== DUT.spislave.rx_valid)) && (DUT_GOLD.SPI_Slave_inst.rx_data !== DUT.spislave.rx_data))
+Condition totals: 0 of 3 input terms covered = 0.00%
+
+                                                    Input Term   Covered  Reason for no coverage   Hint
+                                                   -----------  --------  -----------------------  --------------
+          (DUT_GOLD.SPI_Slave_inst.MISO !== DUT.spislave.MISO)         N  '_1' not hit             Hit '_1'
+  (DUT_GOLD.SPI_Slave_inst.rx_valid !== DUT.spislave.rx_valid)         N  No hits                  Hit '_0' and '_1'
+    (DUT_GOLD.SPI_Slave_inst.rx_data !== DUT.spislave.rx_data)         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target                                                      Non-masking condition(s)      
+ ---------  ---------  --------------------                                            -------------------------     
+  Row   1:          1  (DUT_GOLD.SPI_Slave_inst.MISO !== DUT.spislave.MISO)_0          -                             
+  Row   2:    ***0***  (DUT_GOLD.SPI_Slave_inst.MISO !== DUT.spislave.MISO)_1          ((DUT_GOLD.SPI_Slave_inst.rx_data !== DUT.spislave.rx_data) && (DUT_GOLD.SPI_Slave_inst.rx_valid !== DUT.spislave.rx_valid))
+  Row   3:    ***0***  (DUT_GOLD.SPI_Slave_inst.rx_valid !== DUT.spislave.rx_valid)_0  (DUT_GOLD.SPI_Slave_inst.MISO !== DUT.spislave.MISO)
+  Row   4:    ***0***  (DUT_GOLD.SPI_Slave_inst.rx_valid !== DUT.spislave.rx_valid)_1  ((DUT_GOLD.SPI_Slave_inst.rx_data !== DUT.spislave.rx_data) && (DUT_GOLD.SPI_Slave_inst.MISO !== DUT.spislave.MISO))
+  Row   5:    ***0***  (DUT_GOLD.SPI_Slave_inst.rx_data !== DUT.spislave.rx_data)_0    ((DUT_GOLD.SPI_Slave_inst.MISO !== DUT.spislave.MISO) && (DUT_GOLD.SPI_Slave_inst.rx_valid !== DUT.spislave.rx_valid))
+  Row   6:    ***0***  (DUT_GOLD.SPI_Slave_inst.rx_data !== DUT.spislave.rx_data)_1    ((DUT_GOLD.SPI_Slave_inst.MISO !== DUT.spislave.MISO) && (DUT_GOLD.SPI_Slave_inst.rx_valid !== DUT.spislave.rx_valid))
+
+----------------Focused Condition View-------------------
+Line       215 Item    1  ((DUT_GOLD.RAM_inst.dout !== DUT.mem.dout) && (DUT_GOLD.RAM_inst.tx_valid !== DUT.mem.tx_valid))
+Condition totals: 0 of 2 input terms covered = 0.00%
+
+                                         Input Term   Covered  Reason for no coverage   Hint
+                                        -----------  --------  -----------------------  --------------
+          (DUT_GOLD.RAM_inst.dout !== DUT.mem.dout)         N  '_1' not hit             Hit '_1'
+  (DUT_GOLD.RAM_inst.tx_valid !== DUT.mem.tx_valid)         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target                                           Non-masking condition(s)      
+ ---------  ---------  --------------------                                 -------------------------     
+  Row   1:          1  (DUT_GOLD.RAM_inst.dout !== DUT.mem.dout)_0          -                             
+  Row   2:    ***0***  (DUT_GOLD.RAM_inst.dout !== DUT.mem.dout)_1          (DUT_GOLD.RAM_inst.tx_valid !== DUT.mem.tx_valid)
+  Row   3:    ***0***  (DUT_GOLD.RAM_inst.tx_valid !== DUT.mem.tx_valid)_0  (DUT_GOLD.RAM_inst.dout !== DUT.mem.dout)
+  Row   4:    ***0***  (DUT_GOLD.RAM_inst.tx_valid !== DUT.mem.tx_valid)_1  (DUT_GOLD.RAM_inst.dout !== DUT.mem.dout)
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                     129       111        18    86.04%
+
+================================Statement Details================================
+
+Statement Coverage for instance /SPI_Master_tb --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File SPI_WRAPPER_TB.sv
+    2                                                module SPI_Master_tb ();
+    3                                                
+    4                                                reg clk , rst_n , MOSI , SS_n;
+    5                                                wire MISO, MISO_EXP;
+    6                                                
+    7                                                spi_wrapper DUT (MOSI,MISO,SS_n,clk,rst_n);
+    8                                                SPI_Wrapper_GOLD DUT_GOLD (MOSI,MISO_EXP,SS_n,clk,rst_n);
+    9                                                
+    10                                               // Clock Generation
+    11                                               initial begin
+    12              1                          1         clk = 0;
+    13              1                          1         forever
+    14              1                        177             #5 clk = ~clk; // CLK Period = 10
+    14              2                        176     
+    15                                               end
+    16                                               
+    17                                               reg [7:0] wr_add, rd_add; 
+    18                                               reg [7:0] wr_data, rd_data;
+    19                                               
+    20                                               int error_count = 0;
+    21                                               int correct_count = 0;
+    22                                               
+    23                                               // Reset and Initial Values for Inputs
+    24                                               initial begin
+    25                                                   // Test Reset for 5 Cycles
+    26              1                          1         $display("Test Reset Operation");
+    27              1                          1         rst_n = 0;
+    28              1                          1         {wr_add,rd_add,wr_data,rd_data} = 4'b0000;
+    29              1                          5         repeat(5) begin
+    30              1                          5             MOSI = $random;
+    31              1                          5             SS_n = $random;
+    32                                                       // Golden Model Checking
+    33              1                          5             RESET_CHK();
+    34              1                          5             @(negedge clk);      
+    35                                                       // Self Checking For Reset
+    36                                                       if ((DUT.spislave.cs !== 0) && (DUT.mem.dout !== 0) && (DUT.mem.tx_valid !== 0) && (DUT.mem.addr_rd !== 0) && (DUT.mem.addr_wr !== 0)) begin
+    37              1                    ***0***                 $display("Reset Operation Doesn't Done Correctly");
+    38              1                    ***0***                 error_count = error_count + 1;
+    39                                                       end
+    40                                                       else begin
+    41              1                          5                 $display("Reset Operation Done Correctly");
+    42              1                          5                 correct_count = correct_count + 1;
+    43                                                       end
+    44                                                   end
+    45              1                          1         rst_n = 1;
+    46                                               
+    47                                                   // Test Each Operation
+    48              1                          1         $display("Write Address Operation");
+    49              1                          1         SS_n = 0;   // Start Communication
+    50              1                          1         @(negedge clk);
+    51              1                          1         MOSI = 0;
+    52              1                          3         repeat(3) @(negedge clk);    // Write Address
+    52              2                          3     
+    53                                               
+    54              1                          8         repeat (8) begin             // SIPO
+    55              1                          8             MOSI = $random;
+    56              1                          8             wr_add = {wr_add[6:0],MOSI};
+    57              1                          8             @(negedge clk);
+    58                                                   end
+    59              1                          1         SS_n = 1;   // END Communication
+    60                                                   // Golden Model Checking
+    61              1                          1         SPI_SLAVE_CHK();
+    62              1                          1         Wrapper_CHK();
+    63              1                          1         RAM_CHK();
+    64              1                          1         @(negedge clk);
+    65                                                   // Self Checking for Write Address Value
+    66                                                   if (DUT.mem.addr_wr == wr_add) begin
+    67              1                    ***0***             $display("Write Address is Done Correctly");
+    68              1                    ***0***             correct_count = correct_count + 1;
+    69                                                   end
+    70                                                   else begin
+    71              1                          1             $display("t: %0d Error in Write Address",$time);
+    72              1                          1             error_count = error_count + 1;
+    73                                                   end
+    74              1                          1         @(negedge clk);
+    75                                                   
+    76              1                          1         $display("Write Data Operation");
+    77              1                          1         SS_n = 0;
+    78              1                          1         @(negedge clk);
+    79                                               
+    80              1                          1         MOSI = 0;
+    81              1                          2         repeat(2) @(negedge clk);        // Write Data
+    81              2                          2     
+    82              1                          1         MOSI = 1;
+    83              1                          1         @(negedge clk);
+    84                                               
+    85              1                          8         repeat(8) begin                  // SIPO
+    86              1                          8             MOSI = $random;
+    87              1                          8             wr_data = {wr_data[6:0],MOSI};
+    88              1                          8             @(negedge clk);
+    89                                                   end
+    90              1                          1         SS_n = 1;
+    91                                                   // Golden Model Checking
+    92              1                          1         SPI_SLAVE_CHK();
+    93              1                          1         Wrapper_CHK();
+    94              1                          1         RAM_CHK();
+    95              1                          1         @(negedge clk);
+    96                                                   // Self Checking for Write Data Value
+    97                                                   if (DUT.mem.mem[DUT.mem.addr_wr] == wr_data) begin
+    98              1                    ***0***             $display("Write Data is Done Correctly");
+    99              1                    ***0***             correct_count = correct_count + 1;
+    100                                                  end
+    101                                                  else begin
+    102             1                          1             $display("t: %0d Error in Write Data",$time);
+    103             1                          1             error_count = error_count + 1;
+    104                                                  end
+    105             1                          1         @(negedge clk);
+    106                                              
+    107             1                          1         $display("Read Address Operation");
+    108             1                          1         SS_n = 0;
+    109             1                          1         @(negedge clk);
+    110             1                          1         MOSI = 1;
+    111             1                          2         repeat(2) @(negedge clk);      // Read Address
+    111             2                          2     
+    112             1                          1         MOSI = 0;
+    113             1                          1         @(negedge clk);
+    114                                                  
+    115             1                          8         repeat(8) begin
+    116             1                          8             MOSI = $random;
+    117             1                          8             rd_add = {rd_add[6:0],MOSI};        // SIPO
+    118             1                          8             @(negedge clk);
+    119                                                  end
+    120             1                          1         SS_n = 1;
+    121                                                  // Golden Model Checking
+    122             1                          1         SPI_SLAVE_CHK();
+    123             1                          1         Wrapper_CHK();
+    124             1                          1         RAM_CHK();
+    125             1                          1         @(negedge clk);
+    126                                                  // Self Checking for Read Address
+    127                                                  if (DUT.mem.addr_rd == rd_add) begin
+    128             1                    ***0***             $display("Read Address is Done Correctly");
+    129             1                    ***0***             correct_count = correct_count + 1;
+    130                                                  end
+    131                                                  else begin
+    132             1                          1             $display("t: %0d Error in Read Address",$time);
+    133             1                          1             error_count = error_count + 1;
+    134                                                  end
+    135             1                          1         @(negedge clk);
+    136                                              
+    137             1                          1         $display("Read Data Operation");
+    138             1                          1         SS_n = 0;
+    139             1                          1         @(negedge clk);
+    140             1                          1         MOSI = 1;
+    141             1                          3         repeat(3) @(negedge clk);                // Read Data
+    141             2                          3     
+    142                                                  
+    143             1                          8         repeat(8) begin                          
+    144             1                          8             MOSI = $random; // Dummy Data
+    145             1                          8             @(negedge clk);
+    146                                                  end
+    147             1                          1         @(negedge clk);
+    148                                              
+    149             1                          8         repeat(8) begin                       // PISO
+    150             1                          8             @(negedge clk);
+    151             1                          8             rd_data = {rd_data[6:0],MISO};
+    152                                                  end
+    153                                              
+    154             1                          1         SS_n = 1;
+    155                                                  // Golden Model Checking
+    156             1                          1         SPI_SLAVE_CHK();
+    157             1                          1         Wrapper_CHK();
+    158             1                          1         RAM_CHK();
+    159             1                          1         @(negedge clk);
+    160                                                  // Self Checking for Read Address
+    161                                                  if (DUT.mem.mem[DUT.mem.addr_rd] == rd_data) begin
+    162             1                          1             $display("Read Data is Done Correctly");
+    163             1                          1             correct_count = correct_count + 1;
+    164                                                  end
+    165                                                  else begin
+    166             1                    ***0***             $display("Error in Read Data");
+    167             1                    ***0***             error_count = error_count + 1;
+    168                                                  end
+    169             1                          2         repeat(2) @(negedge clk);
+    169             2                          2     
+    170                                              
+    171             1                          1         $display("----------------------------------------------------");
+    172             1                          1         $display("The Number of Successful Operation = %0d , Failed Operations = %0d",correct_count,error_count);
+    173                                                  
+    174             1                          1         $stop;
+    175                                              end
+    176                                              
+    177                                              task RESET_CHK();
+    178             1                          5         @(negedge clk);
+    179                                                  if ((DUT.spislave.cs !== DUT_GOLD.SPI_Slave_inst.cs) && (DUT.mem.dout !== DUT_GOLD.RAM_inst.dout) && (DUT.mem.tx_valid !== DUT_GOLD.RAM_inst.tx_valid) && (DUT.mem.addr_rd !== DUT_GOLD.RAM_inst.Rd_Addr) && (DUT.mem.addr_wr !== DUT_GOLD.RAM_inst.Wr_Addr)) begin
+    180             1                    ***0***             $display("Design Reset is Wrong");
+    181             1                    ***0***             error_count = error_count + 1;
+    182                                                  end
+    183                                                  else begin
+    184             1                          5             $display("Design Reset is Correct");
+    185             1                          5             correct_count = correct_count + 1;
+    186                                                  end
+    187                                              endtask
+    188                                              
+    189                                              task Wrapper_CHK();
+    190             1                          4         @(negedge clk);
+    191                                                  if (MISO !== MISO_EXP) begin
+    192             1                    ***0***             $display("Wrapper Design is Wrong");
+    193             1                    ***0***             error_count = error_count + 1;
+    194                                                  end
+    195                                                  else begin
+    196             1                          4             $display("Wrapper Design is Correct");
+    197             1                          4             correct_count = correct_count + 1;
+    198                                                  end
+    199                                              endtask
+    200                                              
+    201                                              task SPI_SLAVE_CHK();
+    202             1                          4         @(negedge clk);
+    203                                                  if ((DUT_GOLD.SPI_Slave_inst.MISO !== DUT.spislave.MISO) && (DUT_GOLD.SPI_Slave_inst.rx_valid !== DUT.spislave.rx_valid) && (DUT_GOLD.SPI_Slave_inst.rx_data !== DUT.spislave.rx_data)) begin
+    204             1                    ***0***             $display("SPI Slave Design is Wrong");
+    205             1                    ***0***             error_count = error_count + 1;
+    206                                                  end
+    207                                                  else begin
+    208             1                          4             $display("SPI Slave Design is Correct");
+    209             1                          4             correct_count = correct_count + 1;
+    210                                                  end
+    211                                              endtask
+    212                                              
+    213                                              task RAM_CHK();
+    214             1                          4         @(negedge clk);
+    215                                                  if ((DUT_GOLD.RAM_inst.dout !== DUT.mem.dout) && (DUT_GOLD.RAM_inst.tx_valid !== DUT.mem.tx_valid)) begin
+    216             1                    ***0***             $display("RAM Design is Wrong");
+    217             1                    ***0***             error_count = error_count + 1;
+    218                                                  end
+    219                                                  else begin
+    220             1                          4             $display("RAM Design is Correct");
+    221             1                          4             correct_count = correct_count + 1;
+    222                                                  end
+    223                                              endtask
+    224                                              
+    225                                              initial
+    226             1                          1     $monitor("time = %0d, MOSI = %b, MISO = %b, SS_n = %b, clk = %b, rst_n = %b, rx_data = %d, rx_valid = %b, tx_data = %d, tx_valid = %b",$time,MOSI,MISO,SS_n,clk,rst_n,DUT.rx_data,DUT.rx_valid,DUT.tx_data,DUT.tx_valid);
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                        204        55       149    26.96%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /SPI_Master_tb --
+
+                                              Node      1H->0L      0L->1H                          "Coverage"
+                                              ---------------------------------------------------------------
+                                              MISO           0           0                                0.00 
+                                          MISO_EXP           0           0                                0.00 
+                                              MOSI           1           1                              100.00 
+                                              SS_n           1           1                              100.00 
+                                               clk           1           1                              100.00 
+                                correct_count[0-3]           1           1                              100.00 
+                                  correct_count[4]           0           1                               50.00 
+                               correct_count[5-31]           0           0                                0.00 
+                                    error_count[0]           1           1                              100.00 
+                                    error_count[1]           0           1                               50.00 
+                                 error_count[2-31]           0           0                                0.00 
+                                       rd_add[0-2]           1           1                              100.00 
+                                       rd_add[3-6]           0           1                               50.00 
+                                         rd_add[7]           0           0                                0.00 
+                                      rd_data[0-7]           0           0                                0.00 
+                                             rst_n           0           1                               50.00 
+                                       wr_add[0-4]           1           1                              100.00 
+                                       wr_add[5-6]           0           1                               50.00 
+                                         wr_add[7]           0           0                                0.00 
+                                      wr_data[0-5]           1           1                              100.00 
+                                      wr_data[6-7]           0           1                               50.00 
+
+Total Node Count     =        102 
+Toggled Node Count   =         22 
+Untoggled Node Count =         80 
+
+Toggle Coverage      =      26.96% (55 of 204 bins)
+
+=================================================================================
+=== Instance: /spi_pkg
+=== Design Unit: work.spi_pkg
+=================================================================================
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                       1         0         1     0.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /spi_pkg --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File SPI_WRAPPER_PACKAGE.sv
+    1                                                package spi_pkg;
+    2                                                typedef enum  {IDLE,CHK_CMD,WRITE,READ_ADD,READ_DATA} state_e;
+    3                                                class spi_random;
+    4                                                   rand logic SS_n;
+    5                                                   rand logic  [10:0] data;
+    6                                                   rand logic rst_n;
+    7                                                   logic [9:0]rx_data;
+    8                                                   logic rx_valid;
+    9                                                   logic MISO;
+    10                                               constraint c{
+    11                                               SS_n dist{0:=90,1:=10};
+    12                                               rst_n dist{1:=98,0:=2};
+    13                                               data[10:8] inside{3'b111,3'b110,3'b000,3'b001};
+    14                                               }
+    15                                                  covergroup cvr_grp2;
+    16                                                  SS_N_cp:coverpoint SS_n{
+    17                                                     bins high={1};
+    18                                                     bins low={0};
+    19                                                  }
+    20                                                  rst_n_cp:coverpoint rst_n{
+    21                                                     bins active={0};
+    22                                                     bins non_active={1};
+    23                                                  }
+    24                                                  rx_data_cp:coverpoint rx_data[9:8]
+    25                                                  {
+    26                                               bins write_address={2'b00};
+    27                                               bins write_data={2'b01};
+    28                                               bins read_addr={2'b10};
+    29                                               bins read_data={2'b11};
+    30                                                  }
+    31                                               
+    32                                                  rx_valid_cp:coverpoint rx_valid{
+    33                                                     bins high={1};
+    34                                                     bins low={0};
+    35                                                  }
+    36                                               rx_valid_with_rst: cross rx_valid_cp,rst_n_cp{   ignore_bins rx_valid_activated_rst=binsof(rx_valid_cp.high)&&binsof(rst_n_cp.active);
+    37                                               
+    38                                               }
+    39                                               
+    40                                               rx_data_with_rst: cross  rx_data_cp,rst_n_cp{
+    41                                                     ignore_bins rx_data_with_activated_rst=binsof(rx_data_cp)&&binsof(rst_n_cp.active);
+    42                                               
+    43                                               }
+    44                                               rx_data_with_SS_N: cross rx_data_cp,SS_N_cp;
+    45                                                  endgroup
+    46                                                  function new();
+    47              1                    ***0***           cvr_grp2=new;
+
+
+
+Total Coverage By Instance (filtered view): 70.21%
+

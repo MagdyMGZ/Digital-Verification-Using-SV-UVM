@@ -1,0 +1,99 @@
+Coverage Report by instance with details
+
+=================================================================================
+=== Instance: /\counter_tb#c1 
+=== Design Unit: work.up_counter
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         2         2         0   100.00%
+
+================================Branch Details================================
+
+Branch Coverage for instance /\counter_tb#c1 
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File counter.v
+------------------------------------IF Branch------------------------------------
+    7                                         79     Count coming in to IF
+    7               1                         33     if(~rst_n||counter_up==4'd10)
+    9               1                         46     else
+Branch totals: 2 hits of 2 branches = 100.00%
+
+
+Condition Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Conditions                       2         2         0   100.00%
+
+================================Condition Details================================
+
+Condition Coverage for instance /\counter_tb#c1  --
+
+  File counter.v
+----------------Focused Condition View-------------------
+Line       7 Item    1  (~rst_n || (counter_up == 10))
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+          Input Term   Covered  Reason for no coverage   Hint
+         -----------  --------  -----------------------  --------------
+               rst_n         Y
+  (counter_up == 10)         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  rst_n_0               -                             
+  Row   2:          1  rst_n_1               ~(counter_up == 10)           
+  Row   3:          1  (counter_up == 10)_0  rst_n                         
+  Row   4:          1  (counter_up == 10)_1  rst_n                         
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                       3         3         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /\counter_tb#c1  --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File counter.v
+    2                                                module up_counter(input clk, rst_n, output[3:0] counter);
+    3                                                reg [3:0] counter_up;
+    4                                                
+    5               1                         79     always @(posedge clk or negedge rst_n)
+    6                                                begin
+    7                                                if(~rst_n||counter_up==4'd10)
+    8               1                         33      counter_up <= 4'd0;
+    9                                                else
+    10              1                         46      counter_up <= counter_up + 4'd1;
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                         20        20         0   100.00%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /\counter_tb#c1  --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                                               clk           1           1      100.00 
+                                      counter[0-3]           1           1      100.00 
+                                   counter_up[3-0]           1           1      100.00 
+                                             rst_n           1           1      100.00 
+
+Total Node Count     =         10 
+Toggled Node Count   =         10 
+Untoggled Node Count =          0 
+
+Toggle Coverage      =     100.00% (20 of 20 bins)
+
+
+Total Coverage By Instance (filtered view): 100.00%
+

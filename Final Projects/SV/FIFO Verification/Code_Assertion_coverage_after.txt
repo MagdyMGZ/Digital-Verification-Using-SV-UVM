@@ -1,0 +1,501 @@
+Coverage Report by instance with details
+
+=================================================================================
+=== Instance: /\TOP#dut 
+=== Design Unit: work.FIFO
+=================================================================================
+
+Assertion Coverage:
+    Assertions                       9         9         0   100.00%
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/\TOP#dut /write_acknowledge
+                     FIFO_after.sv(83)                  0          1
+/\TOP#dut /underflow_assertion
+                     FIFO_after.sv(89)                  0          1
+/\TOP#dut /overflow_assertion
+                     FIFO_after.sv(95)                  0          1
+/\TOP#dut /increment_assertion
+                     FIFO_after.sv(101)                 0          1
+/\TOP#dut /decrement_assertion
+                     FIFO_after.sv(107)                 0          1
+/\TOP#dut /full_assertion
+                     FIFO_after.sv(113)                 0          1
+/\TOP#dut /empty_assertion
+                     FIFO_after.sv(119)                 0          1
+/\TOP#dut /almostfull_assertion
+                     FIFO_after.sv(125)                 0          1
+/\TOP#dut /almostempty_assertion
+                     FIFO_after.sv(131)                 0          1
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        25        25         0   100.00%
+
+================================Branch Details================================
+
+Branch Coverage for instance /\TOP#dut 
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File FIFO_after.sv
+------------------------------------IF Branch------------------------------------
+    15                                     10190     Count coming in to IF
+    15              1                        384     	if (!if_obj.rst_n) begin
+    20              1                       3972     	else if (if_obj.wr_en && count < if_obj.FIFO_DEPTH) begin
+    25              1                       5834     	else begin 
+Branch totals: 3 hits of 3 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    27                                      5834     Count coming in to IF
+    27              1                       2810     		if (if_obj.full && if_obj.wr_en)
+    29              1                       3024     		else
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    36                                     10190     Count coming in to IF
+    36              1                        384     	if (!if_obj.rst_n) begin
+    41              1                       2751     	else if (if_obj.rd_en && count != 0) begin
+    45              1                       7055     	else
+Branch totals: 3 hits of 3 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    47                                      7055     Count coming in to IF
+    47              1                        133     		if(if_obj.empty && if_obj.rd_en)
+    49              1                       6922     		else
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    56                                      8508     Count coming in to IF
+    56              1                        380     	if (!if_obj.rst_n) begin
+    59              1                       8128     	else begin
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    60                                      8128     Count coming in to IF
+    60              1                       2808     		if	( ({if_obj.wr_en, if_obj.rd_en} == 2'b10) && !if_obj.full) 
+    62              1                        851     		else if ( ({if_obj.wr_en, if_obj.rd_en} == 2'b01) && !if_obj.empty)
+    64              1                        815     		else if (({if_obj.wr_en, if_obj.rd_en} == 2'b11) && if_obj.full)      // priority for write operation
+    66              1                         79     		else if (({if_obj.wr_en, if_obj.rd_en} == 2'b11) && if_obj.empty)      // priority for read operation
+                                            3575     All False Count
+Branch totals: 5 hits of 5 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    72                                      4739     Count coming in to IF
+    72              1                       1253     assign if_obj.full = (count == if_obj.FIFO_DEPTH)? 1 : 0;            
+    72              2                       3486     assign if_obj.full = (count == if_obj.FIFO_DEPTH)? 1 : 0;            
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    73                                      4739     Count coming in to IF
+    73              1                        235     assign if_obj.empty = (count == 0)? 1 : 0;                  
+    73              2                       4504     assign if_obj.empty = (count == 0)? 1 : 0;                  
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    74                                      4739     Count coming in to IF
+    74              1                       1541     assign if_obj.almostfull = (count == if_obj.FIFO_DEPTH-1)? 1 : 0;           
+    74              2                       3198     assign if_obj.almostfull = (count == if_obj.FIFO_DEPTH-1)? 1 : 0;           
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    75                                      4739     Count coming in to IF
+    75              1                        275     assign if_obj.almostempty = (count == 1)? 1 : 0;
+    75              2                       4464     assign if_obj.almostempty = (count == 1)? 1 : 0;
+Branch totals: 2 hits of 2 branches = 100.00%
+
+
+Condition Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Conditions                      24        24         0   100.00%
+
+================================Condition Details================================
+
+Condition Coverage for instance /\TOP#dut  --
+
+  File FIFO_after.sv
+----------------Focused Condition View-------------------
+Line       20 Item    1  (if_obj.wr_en && (count < if_obj.FIFO_DEPTH))
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+                   Input Term   Covered  Reason for no coverage   Hint
+                  -----------  --------  -----------------------  --------------
+                 if_obj.wr_en         Y
+  (count < if_obj.FIFO_DEPTH)         Y
+
+     Rows:       Hits  FEC Target                     Non-masking condition(s)      
+ ---------  ---------  --------------------           -------------------------     
+  Row   1:          1  if_obj.wr_en_0                 -                             
+  Row   2:          1  if_obj.wr_en_1                 (count < if_obj.FIFO_DEPTH)   
+  Row   3:          1  (count < if_obj.FIFO_DEPTH)_0  if_obj.wr_en                  
+  Row   4:          1  (count < if_obj.FIFO_DEPTH)_1  if_obj.wr_en                  
+
+----------------Focused Condition View-------------------
+Line       27 Item    1  (if_obj.full && if_obj.wr_en)
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+    Input Term   Covered  Reason for no coverage   Hint
+   -----------  --------  -----------------------  --------------
+   if_obj.full         Y
+  if_obj.wr_en         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  if_obj.full_0         -                             
+  Row   2:          1  if_obj.full_1         if_obj.wr_en                  
+  Row   3:          1  if_obj.wr_en_0        if_obj.full                   
+  Row   4:          1  if_obj.wr_en_1        if_obj.full                   
+
+----------------Focused Condition View-------------------
+Line       41 Item    1  (if_obj.rd_en && (count != 0))
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+    Input Term   Covered  Reason for no coverage   Hint
+   -----------  --------  -----------------------  --------------
+  if_obj.rd_en         Y
+  (count != 0)         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  if_obj.rd_en_0        -                             
+  Row   2:          1  if_obj.rd_en_1        (count != 0)                  
+  Row   3:          1  (count != 0)_0        if_obj.rd_en                  
+  Row   4:          1  (count != 0)_1        if_obj.rd_en                  
+
+----------------Focused Condition View-------------------
+Line       47 Item    1  (if_obj.empty && if_obj.rd_en)
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+    Input Term   Covered  Reason for no coverage   Hint
+   -----------  --------  -----------------------  --------------
+  if_obj.empty         Y
+  if_obj.rd_en         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  if_obj.empty_0        -                             
+  Row   2:          1  if_obj.empty_1        if_obj.rd_en                  
+  Row   3:          1  if_obj.rd_en_0        if_obj.empty                  
+  Row   4:          1  if_obj.rd_en_1        if_obj.empty                  
+
+----------------Focused Condition View-------------------
+Line       60 Item    1  ((~if_obj.rd_en && if_obj.wr_en) && ~if_obj.full)
+Condition totals: 3 of 3 input terms covered = 100.00%
+
+    Input Term   Covered  Reason for no coverage   Hint
+   -----------  --------  -----------------------  --------------
+  if_obj.rd_en         Y
+  if_obj.wr_en         Y
+   if_obj.full         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  if_obj.rd_en_0        (~if_obj.full && if_obj.wr_en)
+  Row   2:          1  if_obj.rd_en_1        -                             
+  Row   3:          1  if_obj.wr_en_0        ~if_obj.rd_en                 
+  Row   4:          1  if_obj.wr_en_1        (~if_obj.full && ~if_obj.rd_en)
+  Row   5:          1  if_obj.full_0         (~if_obj.rd_en && if_obj.wr_en)
+  Row   6:          1  if_obj.full_1         (~if_obj.rd_en && if_obj.wr_en)
+
+----------------Focused Condition View-------------------
+Line       62 Item    1  ((if_obj.rd_en && ~if_obj.wr_en) && ~if_obj.empty)
+Condition totals: 3 of 3 input terms covered = 100.00%
+
+    Input Term   Covered  Reason for no coverage   Hint
+   -----------  --------  -----------------------  --------------
+  if_obj.rd_en         Y
+  if_obj.wr_en         Y
+  if_obj.empty         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  if_obj.rd_en_0        -                             
+  Row   2:          1  if_obj.rd_en_1        (~if_obj.empty && ~if_obj.wr_en)
+  Row   3:          1  if_obj.wr_en_0        (~if_obj.empty && if_obj.rd_en)
+  Row   4:          1  if_obj.wr_en_1        if_obj.rd_en                  
+  Row   5:          1  if_obj.empty_0        (if_obj.rd_en && ~if_obj.wr_en)
+  Row   6:          1  if_obj.empty_1        (if_obj.rd_en && ~if_obj.wr_en)
+
+----------------Focused Condition View-------------------
+Line       64 Item    1  ((if_obj.rd_en && if_obj.wr_en) && if_obj.full)
+Condition totals: 3 of 3 input terms covered = 100.00%
+
+    Input Term   Covered  Reason for no coverage   Hint
+   -----------  --------  -----------------------  --------------
+  if_obj.rd_en         Y
+  if_obj.wr_en         Y
+   if_obj.full         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  if_obj.rd_en_0        -                             
+  Row   2:          1  if_obj.rd_en_1        (if_obj.full && if_obj.wr_en) 
+  Row   3:          1  if_obj.wr_en_0        if_obj.rd_en                  
+  Row   4:          1  if_obj.wr_en_1        (if_obj.full && if_obj.rd_en) 
+  Row   5:          1  if_obj.full_0         (if_obj.rd_en && if_obj.wr_en)
+  Row   6:          1  if_obj.full_1         (if_obj.rd_en && if_obj.wr_en)
+
+----------------Focused Condition View-------------------
+Line       66 Item    1  ((if_obj.rd_en && if_obj.wr_en) && if_obj.empty)
+Condition totals: 3 of 3 input terms covered = 100.00%
+
+    Input Term   Covered  Reason for no coverage   Hint
+   -----------  --------  -----------------------  --------------
+  if_obj.rd_en         Y
+  if_obj.wr_en         Y
+  if_obj.empty         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  if_obj.rd_en_0        -                             
+  Row   2:          1  if_obj.rd_en_1        (if_obj.empty && if_obj.wr_en)
+  Row   3:          1  if_obj.wr_en_0        if_obj.rd_en                  
+  Row   4:          1  if_obj.wr_en_1        (if_obj.empty && if_obj.rd_en)
+  Row   5:          1  if_obj.empty_0        (if_obj.rd_en && if_obj.wr_en)
+  Row   6:          1  if_obj.empty_1        (if_obj.rd_en && if_obj.wr_en)
+
+----------------Focused Condition View-------------------
+Line       72 Item    1  (count == if_obj.FIFO_DEPTH)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+                    Input Term   Covered  Reason for no coverage   Hint
+                   -----------  --------  -----------------------  --------------
+  (count == if_obj.FIFO_DEPTH)         Y
+
+     Rows:       Hits  FEC Target                      Non-masking condition(s)      
+ ---------  ---------  --------------------            -------------------------     
+  Row   1:          1  (count == if_obj.FIFO_DEPTH)_0  -                             
+  Row   2:          1  (count == if_obj.FIFO_DEPTH)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       73 Item    1  (count == 0)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+    Input Term   Covered  Reason for no coverage   Hint
+   -----------  --------  -----------------------  --------------
+  (count == 0)         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (count == 0)_0        -                             
+  Row   2:          1  (count == 0)_1        -                             
+
+----------------Focused Condition View-------------------
+Line       74 Item    1  (count == (if_obj.FIFO_DEPTH - 1))
+Condition totals: 1 of 1 input term covered = 100.00%
+
+                          Input Term   Covered  Reason for no coverage   Hint
+                         -----------  --------  -----------------------  --------------
+  (count == (if_obj.FIFO_DEPTH - 1))         Y
+
+     Rows:       Hits  FEC Target                            Non-masking condition(s)      
+ ---------  ---------  --------------------                  -------------------------     
+  Row   1:          1  (count == (if_obj.FIFO_DEPTH - 1))_0  -                             
+  Row   2:          1  (count == (if_obj.FIFO_DEPTH - 1))_1  -                             
+
+----------------Focused Condition View-------------------
+Line       75 Item    1  (count == 1)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+    Input Term   Covered  Reason for no coverage   Hint
+   -----------  --------  -----------------------  --------------
+  (count == 1)         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (count == 1)_0        -                             
+  Row   2:          1  (count == 1)_1        -                             
+
+
+
+Directive Coverage:
+    Directives                       9         9         0   100.00%
+
+DIRECTIVE COVERAGE:
+--------------------------------------------------------------------------------------------
+Name                                     Design Design   Lang File(Line)      Hits Status    
+                                         Unit   UnitType                                     
+--------------------------------------------------------------------------------------------
+/\TOP#dut /write_acknowledge_cover       FIFO   Verilog  SVA  FIFO_after.sv(84)
+                                                                              3897 Covered   
+/\TOP#dut /underflow_cover               FIFO   Verilog  SVA  FIFO_after.sv(90)
+                                                                               128 Covered   
+/\TOP#dut /overflow_cover                FIFO   Verilog  SVA  FIFO_after.sv(96)
+                                                                              2755 Covered   
+/\TOP#dut /increment_cover               FIFO   Verilog  SVA  FIFO_after.sv(102)
+                                                                              2751 Covered   
+/\TOP#dut /decrement_cover               FIFO   Verilog  SVA  FIFO_after.sv(108)
+                                                                               835 Covered   
+/\TOP#dut /full_cover                    FIFO   Verilog  SVA  FIFO_after.sv(114)
+                                                                              4050 Covered   
+/\TOP#dut /empty_cover                   FIFO   Verilog  SVA  FIFO_after.sv(120)
+                                                                               367 Covered   
+/\TOP#dut /almostfull_cover              FIFO   Verilog  SVA  FIFO_after.sv(126)
+                                                                              2519 Covered   
+/\TOP#dut /almostempty_cover             FIFO   Verilog  SVA  FIFO_after.sv(132)
+                                                                               447 Covered   
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                      28        28         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /\TOP#dut  --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File FIFO_after.sv
+    1                                                module FIFO(FIFO_if.DUT if_obj);
+    2                                                
+    3                                                // declaration of max. FIFO address
+    4                                                localparam max_fifo_addr = $clog2(if_obj.FIFO_DEPTH);   // max_fifo_addr = 3
+    5                                                
+    6                                                // declaration of Memory (FIFO)
+    7                                                reg [if_obj.FIFO_WIDTH-1:0] mem [if_obj.FIFO_DEPTH-1:0];
+    8                                                
+    9                                                // Declaration of read & write pointers
+    10                                               reg [max_fifo_addr-1:0] wr_ptr, rd_ptr;          
+    11                                               reg [max_fifo_addr:0] count;              // extra bit to distinguish between full & empty flags & it represents the fill level of the FIFO
+    12                                               
+    13                                               // always block specialized for writing operation
+    14              1                      10190     always @(posedge if_obj.clk or negedge if_obj.rst_n) begin
+    15                                               	if (!if_obj.rst_n) begin
+    16              1                        384     		wr_ptr <= 0;
+    17              1                        384     		if_obj.overflow <= 0;
+    18              1                        384     		if_obj.wr_ack <= 0;             // reset the sequential outputs as wr_ack , overflow
+    19                                               	end
+    20                                               	else if (if_obj.wr_en && count < if_obj.FIFO_DEPTH) begin
+    21              1                       3972     		mem[wr_ptr] <= if_obj.data_in;
+    22              1                       3972     		if_obj.wr_ack <= 1;
+    23              1                       3972     		wr_ptr <= wr_ptr + 1;
+    24                                               	end
+    25                                               	else begin 
+    26              1                       5834     		if_obj.wr_ack <= 0; 
+    27                                               		if (if_obj.full && if_obj.wr_en)
+    28              1                       2810     			if_obj.overflow <= 1;
+    29                                               		else
+    30              1                       3024     			if_obj.overflow <= 0;
+    31                                               	end
+    32                                               end
+    33                                               
+    34                                               // always block specialized for reading operation
+    35              1                      10190     always @(posedge if_obj.clk or negedge if_obj.rst_n) begin
+    36                                               	if (!if_obj.rst_n) begin
+    37              1                        384     		rd_ptr <= 0;
+    38              1                        384     		if_obj.underflow <= 0;
+    39              1                        384     		if_obj.data_out <= 0;       // reset the sequential outputs as data_out , underflow
+    40                                               	end
+    41                                               	else if (if_obj.rd_en && count != 0) begin
+    42              1                       2751     		if_obj.data_out <= mem[rd_ptr];
+    43              1                       2751     		rd_ptr <= rd_ptr + 1;
+    44                                               		end
+    45                                               	else
+    46                                               	begin
+    47                                               		if(if_obj.empty && if_obj.rd_en)
+    48              1                        133     			if_obj.underflow  <= 1;
+    49                                               		else
+    50              1                       6922     			if_obj.underflow  <= 0;
+    51                                               	end
+    52                                               end
+    53                                               
+    54                                               // always block specialized for counter signal
+    55              1                       8508     always @(posedge if_obj.clk or negedge if_obj.rst_n) begin
+    56                                               	if (!if_obj.rst_n) begin
+    57              1                        380     		count <= 0;
+    58                                               	end
+    59                                               	else begin
+    60                                               		if	( ({if_obj.wr_en, if_obj.rd_en} == 2'b10) && !if_obj.full) 
+    61              1                       2808     			count <= count + 1;
+    62                                               		else if ( ({if_obj.wr_en, if_obj.rd_en} == 2'b01) && !if_obj.empty)
+    63              1                        851     			count <= count - 1;
+    64                                               		else if (({if_obj.wr_en, if_obj.rd_en} == 2'b11) && if_obj.full)      // priority for write operation
+    65              1                        815     			count <= count - 1;
+    66                                               		else if (({if_obj.wr_en, if_obj.rd_en} == 2'b11) && if_obj.empty)      // priority for read operation
+    67              1                         79     			count <= count + 1;
+    68                                               	end
+    69                                               end
+    70                                               
+    71                                               // continous assignment for the combinational outputs
+    72              1                       4740     assign if_obj.full = (count == if_obj.FIFO_DEPTH)? 1 : 0;            
+    73              1                       4740     assign if_obj.empty = (count == 0)? 1 : 0;                  
+    74              1                       4740     assign if_obj.almostfull = (count == if_obj.FIFO_DEPTH-1)? 1 : 0;           
+    75              1                       4740     assign if_obj.almostempty = (count == 1)? 1 : 0;
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                         20        20         0   100.00%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /\TOP#dut  --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                                        count[3-0]           1           1      100.00 
+                                       rd_ptr[2-0]           1           1      100.00 
+                                       wr_ptr[2-0]           1           1      100.00 
+
+Total Node Count     =         10 
+Toggled Node Count   =         10 
+Untoggled Node Count =          0 
+
+Toggle Coverage      =     100.00% (20 of 20 bins)
+
+
+DIRECTIVE COVERAGE:
+--------------------------------------------------------------------------------------------
+Name                                     Design Design   Lang File(Line)      Hits Status    
+                                         Unit   UnitType                                     
+--------------------------------------------------------------------------------------------
+/\TOP#dut /write_acknowledge_cover       FIFO   Verilog  SVA  FIFO_after.sv(84)
+                                                                              3897 Covered   
+/\TOP#dut /underflow_cover               FIFO   Verilog  SVA  FIFO_after.sv(90)
+                                                                               128 Covered   
+/\TOP#dut /overflow_cover                FIFO   Verilog  SVA  FIFO_after.sv(96)
+                                                                              2755 Covered   
+/\TOP#dut /increment_cover               FIFO   Verilog  SVA  FIFO_after.sv(102)
+                                                                              2751 Covered   
+/\TOP#dut /decrement_cover               FIFO   Verilog  SVA  FIFO_after.sv(108)
+                                                                               835 Covered   
+/\TOP#dut /full_cover                    FIFO   Verilog  SVA  FIFO_after.sv(114)
+                                                                              4050 Covered   
+/\TOP#dut /empty_cover                   FIFO   Verilog  SVA  FIFO_after.sv(120)
+                                                                               367 Covered   
+/\TOP#dut /almostfull_cover              FIFO   Verilog  SVA  FIFO_after.sv(126)
+                                                                              2519 Covered   
+/\TOP#dut /almostempty_cover             FIFO   Verilog  SVA  FIFO_after.sv(132)
+                                                                               447 Covered   
+
+TOTAL DIRECTIVE COVERAGE: 100.00%  COVERS: 9
+
+ASSERTION RESULTS:
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/\TOP#dut /write_acknowledge
+                     FIFO_after.sv(83)                  0          1
+/\TOP#dut /underflow_assertion
+                     FIFO_after.sv(89)                  0          1
+/\TOP#dut /overflow_assertion
+                     FIFO_after.sv(95)                  0          1
+/\TOP#dut /increment_assertion
+                     FIFO_after.sv(101)                 0          1
+/\TOP#dut /decrement_assertion
+                     FIFO_after.sv(107)                 0          1
+/\TOP#dut /full_assertion
+                     FIFO_after.sv(113)                 0          1
+/\TOP#dut /empty_assertion
+                     FIFO_after.sv(119)                 0          1
+/\TOP#dut /almostfull_assertion
+                     FIFO_after.sv(125)                 0          1
+/\TOP#dut /almostempty_assertion
+                     FIFO_after.sv(131)                 0          1
+
+Total Coverage By Instance (filtered view): 100.00%
+

@@ -1,0 +1,273 @@
+Coverage Report by instance with details
+
+=================================================================================
+=== Instance: /\SPI_RAM_TOP#dut_inst /SVA_inst
+=== Design Unit: work.SPI_RAM_SVA
+=================================================================================
+
+Assertion Coverage:
+    Assertions                       3         3         0   100.00%
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/\SPI_RAM_TOP#dut_inst /SVA_inst/tx_asser_11
+                     SPI_RAM_SVA.sv(12)                 0          1
+/\SPI_RAM_TOP#dut_inst /SVA_inst/tx_asser_00_01
+                     SPI_RAM_SVA.sv(23)                 0          1
+/\SPI_RAM_TOP#dut_inst /SVA_inst/tx_asser_10
+                     SPI_RAM_SVA.sv(34)                 0          1
+
+Directive Coverage:
+    Directives                       3         3         0   100.00%
+
+DIRECTIVE COVERAGE:
+--------------------------------------------------------------------------------------------
+Name                                     Design Design   Lang File(Line)      Hits Status    
+                                         Unit   UnitType                                     
+--------------------------------------------------------------------------------------------
+/\SPI_RAM_TOP#dut_inst /SVA_inst/tx_chk_11 
+                                         SPI_RAM_SVA Verilog  SVA  SPI_RAM_SVA.sv(11)
+                                                                               255 Covered   
+/\SPI_RAM_TOP#dut_inst /SVA_inst/tx_chk_00_01 
+                                         SPI_RAM_SVA Verilog  SVA  SPI_RAM_SVA.sv(22)
+                                                                               513 Covered   
+/\SPI_RAM_TOP#dut_inst /SVA_inst/tx_chk_10 
+                                         SPI_RAM_SVA Verilog  SVA  SPI_RAM_SVA.sv(33)
+                                                                               256 Covered   
+
+=================================================================================
+=== Instance: /\SPI_RAM_TOP#dut_inst 
+=== Design Unit: work.SPI_RAM_AFTER
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         8         8         0   100.00%
+
+================================Branch Details================================
+
+Branch Coverage for instance /\SPI_RAM_TOP#dut_inst 
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File SPI_RAM_AFTER.sv
+------------------------------------IF Branch------------------------------------
+    5                                       1029     Count coming in to IF
+    5               1                          2     	if (!r_if.rst_n) begin
+
+    14              1                       1025     	else if (r_if.rx_valid) begin
+
+                                               2     All False Count
+Branch totals: 3 hits of 3 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    15                                      1025     Count coming in to IF
+    15              1                        256     		if (r_if.din[9:8] == 2'b00) begin
+
+    19              1                        256     		else if (r_if.din[9:8] == 2'b01) begin
+
+    23              1                        256     		else if (r_if.din[9:8] == 2'b10) begin
+
+    27              1                        256     		else if (r_if.din[9:8] == 2'b11) begin
+
+    31              1                          1     		else begin
+
+Branch totals: 5 hits of 5 branches = 100.00%
+
+
+Condition Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Conditions                       4         3         1    75.00%
+
+================================Condition Details================================
+
+Condition Coverage for instance /\SPI_RAM_TOP#dut_inst  --
+
+  File SPI_RAM_AFTER.sv
+----------------Focused Condition View-------------------
+Line       15 Item    1  (r_if.din[9:8] == 0)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+            Input Term   Covered  Reason for no coverage   Hint
+           -----------  --------  -----------------------  --------------
+  (r_if.din[9:8] == 0)         Y
+
+     Rows:       Hits  FEC Target              Non-masking condition(s)      
+ ---------  ---------  --------------------    -------------------------     
+  Row   1:          1  (r_if.din[9:8] == 0)_0  -                             
+  Row   2:          1  (r_if.din[9:8] == 0)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       19 Item    1  (r_if.din[9:8] == 1)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+            Input Term   Covered  Reason for no coverage   Hint
+           -----------  --------  -----------------------  --------------
+  (r_if.din[9:8] == 1)         Y
+
+     Rows:       Hits  FEC Target              Non-masking condition(s)      
+ ---------  ---------  --------------------    -------------------------     
+  Row   1:          1  (r_if.din[9:8] == 1)_0  -                             
+  Row   2:          1  (r_if.din[9:8] == 1)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       23 Item    1  (r_if.din[9:8] == 2)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+            Input Term   Covered  Reason for no coverage   Hint
+           -----------  --------  -----------------------  --------------
+  (r_if.din[9:8] == 2)         Y
+
+     Rows:       Hits  FEC Target              Non-masking condition(s)      
+ ---------  ---------  --------------------    -------------------------     
+  Row   1:          1  (r_if.din[9:8] == 2)_0  -                             
+  Row   2:          1  (r_if.din[9:8] == 2)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       27 Item    1  (r_if.din[9:8] == 3)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+            Input Term   Covered  Reason for no coverage   Hint
+           -----------  --------  -----------------------  --------------
+  (r_if.din[9:8] == 3)         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target              Non-masking condition(s)      
+ ---------  ---------  --------------------    -------------------------     
+  Row   1:    ***0***  (r_if.din[9:8] == 3)_0  -                             
+  Row   2:          1  (r_if.din[9:8] == 3)_1  -                             
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                      18        18         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /\SPI_RAM_TOP#dut_inst  --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File SPI_RAM_AFTER.sv
+    1                                                module SPI_RAM_AFTER (RAM_if.DUT r_if);
+
+    2                                                reg [r_if.ADDR_SIZE-1:0] addr_rd, addr_wr;
+
+    3                                                reg [7:0] mem [r_if.MEM_DEPTH-1:0];
+
+    4               1                       1029     always @(posedge r_if.clk or negedge r_if.rst_n) begin
+
+    5                                                	if (!r_if.rst_n) begin
+
+    6               1                          2     		for (int i = 0 ; i < r_if.MEM_DEPTH ; i = i + 1) begin
+
+    6               2                        512     
+    7               1                        512     			mem [i] <= 0;
+
+    8                                                		end
+
+    9               1                          2     		r_if.dout <= 0;
+
+    10              1                          2     		r_if.tx_valid <= 0;
+
+    11              1                          2     		addr_rd <= 0;
+
+    12              1                          2     		addr_wr <= 0;
+
+    13                                               	end
+
+    14                                               	else if (r_if.rx_valid) begin
+
+    15                                               		if (r_if.din[9:8] == 2'b00) begin
+
+    16              1                        256     			addr_wr <= r_if.din[7:0];
+
+    17              1                        256     			r_if.tx_valid <= 0;
+
+    18                                               		end
+
+    19                                               		else if (r_if.din[9:8] == 2'b01) begin
+
+    20              1                        256     			mem [addr_wr] <= r_if.din[7:0];
+
+    21              1                        256     			r_if.tx_valid <= 0;
+
+    22                                               		end
+
+    23                                               		else if (r_if.din[9:8] == 2'b10) begin
+
+    24              1                        256     			addr_rd <= r_if.din[7:0];
+
+    25              1                        256     			r_if.tx_valid <= 0;
+
+    26                                               		end
+
+    27                                               		else if (r_if.din[9:8] == 2'b11) begin
+
+    28              1                        256     			r_if.dout <= mem[addr_rd];
+
+    29              1                        256     			r_if.tx_valid <= 1;
+
+    30                                               		end
+
+    31                                               		else begin
+
+    32              1                          1     			r_if.dout <= 0;
+
+    33              1                          1     			r_if.tx_valid <= 0;
+
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                         32        32         0   100.00%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /\SPI_RAM_TOP#dut_inst  --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                                      addr_rd[7-0]           1           1      100.00 
+                                      addr_wr[7-0]           1           1      100.00 
+
+Total Node Count     =         16 
+Toggled Node Count   =         16 
+Untoggled Node Count =          0 
+
+Toggle Coverage      =     100.00% (32 of 32 bins)
+
+
+DIRECTIVE COVERAGE:
+--------------------------------------------------------------------------------------------
+Name                                     Design Design   Lang File(Line)      Hits Status    
+                                         Unit   UnitType                                     
+--------------------------------------------------------------------------------------------
+/\SPI_RAM_TOP#dut_inst /SVA_inst/tx_chk_11 
+                                         SPI_RAM_SVA Verilog  SVA  SPI_RAM_SVA.sv(11)
+                                                                               255 Covered   
+/\SPI_RAM_TOP#dut_inst /SVA_inst/tx_chk_00_01 
+                                         SPI_RAM_SVA Verilog  SVA  SPI_RAM_SVA.sv(22)
+                                                                               513 Covered   
+/\SPI_RAM_TOP#dut_inst /SVA_inst/tx_chk_10 
+                                         SPI_RAM_SVA Verilog  SVA  SPI_RAM_SVA.sv(33)
+                                                                               256 Covered   
+
+TOTAL DIRECTIVE COVERAGE: 100.00%  COVERS: 3
+
+ASSERTION RESULTS:
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/\SPI_RAM_TOP#dut_inst /SVA_inst/tx_asser_11
+                     SPI_RAM_SVA.sv(12)                 0          1
+/\SPI_RAM_TOP#dut_inst /SVA_inst/tx_asser_00_01
+                     SPI_RAM_SVA.sv(23)                 0          1
+/\SPI_RAM_TOP#dut_inst /SVA_inst/tx_asser_10
+                     SPI_RAM_SVA.sv(34)                 0          1
+
+Total Coverage By Instance (filtered view): 95.83%
+

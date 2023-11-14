@@ -1,0 +1,51 @@
+Coverage Report by instance with details
+
+=================================================================================
+=== Instance: /\tb_s2p#DUT 
+=== Design Unit: work.SIPO
+=================================================================================
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                       2         2         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /\tb_s2p#DUT  --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File sipo.v
+    2                                                module SIPO (clk, MOSI, rx_data); 
+    3                                                input  clk, MOSI; 
+    4                                                output [9:0] rx_data; 
+    5                                                reg [9:0] tmp; 
+    6               1                       1101       always @(posedge clk) 
+    7                                                  begin 
+    8               1                       1101         tmp = {tmp[8:0],MOSI}; 
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                         44        44         0   100.00%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /\tb_s2p#DUT  --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                                              MOSI           1           1      100.00 
+                                               clk           1           1      100.00 
+                                      rx_data[0-9]           1           1      100.00 
+                                          tmp[9-0]           1           1      100.00 
+
+Total Node Count     =         22 
+Toggled Node Count   =         22 
+Untoggled Node Count =          0 
+
+Toggle Coverage      =     100.00% (44 of 44 bins)
+
+
+Total Coverage By Instance (filtered view): 100.00%
+

@@ -1,0 +1,172 @@
+Coverage Report by instance with details
+
+=================================================================================
+=== Instance: /\top#dut 
+=== Design Unit: work.project_ram
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         7         7         0   100.00%
+
+================================Branch Details================================
+
+Branch Coverage for instance /\top#dut 
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File ram.v
+------------------------------------IF Branch------------------------------------
+    14                                     30608     Count coming in to IF
+    14              1                       1239     	if (~rst_n) begin
+    26              1                      26408     	else if (rx_valid) begin
+                                            2961     All False Count
+Branch totals: 3 hits of 3 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    28                                     26408     Count coming in to IF
+    28              1                       6653     		if (din[9:8] == 2'b00) begin
+    32              1                       6588     		else if (din[9:8] == 2'b01) begin
+    38              1                       6583     		else if (din[9:8] == 2'b10) begin
+    42              1                       6584     		else begin
+Branch totals: 4 hits of 4 branches = 100.00%
+
+
+Condition Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Conditions                       3         3         0   100.00%
+
+================================Condition Details================================
+
+Condition Coverage for instance /\top#dut  --
+
+  File ram.v
+----------------Focused Condition View-------------------
+Line       28 Item    1  (din[9:8] == 0)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+       Input Term   Covered  Reason for no coverage   Hint
+      -----------  --------  -----------------------  --------------
+  (din[9:8] == 0)         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (din[9:8] == 0)_0     -                             
+  Row   2:          1  (din[9:8] == 0)_1     -                             
+
+----------------Focused Condition View-------------------
+Line       32 Item    1  (din[9:8] == 1)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+       Input Term   Covered  Reason for no coverage   Hint
+      -----------  --------  -----------------------  --------------
+  (din[9:8] == 1)         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (din[9:8] == 1)_0     -                             
+  Row   2:          1  (din[9:8] == 1)_1     -                             
+
+----------------Focused Condition View-------------------
+Line       38 Item    1  (din[9:8] == 2)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+       Input Term   Covered  Reason for no coverage   Hint
+      -----------  --------  -----------------------  --------------
+  (din[9:8] == 2)         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (din[9:8] == 2)_0     -                             
+  Row   2:          1  (din[9:8] == 2)_1     -                             
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                      19        19         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /\top#dut  --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File ram.v
+    1                                                module project_ram(din, rx_valid, dout, tx_valid, clk, rst_n);
+    2                                                parameter MEM_DEPTH = 256;
+    3                                                parameter ADDR_SIZE = 8;
+    4                                                input rx_valid, clk, rst_n;
+    5                                                input [9:0] din;
+    6                                                output reg tx_valid;
+    7                                                output reg [7:0] dout;
+    8                                                reg [ADDR_SIZE-1:0] addr_rd, addr_wr;
+    9                                                reg [7:0] mem [MEM_DEPTH-1:0];
+    10                                               reg [8:0] i ;
+    11                                               /*
+    12                                               bugs  if rst_n activated the internal register of read/write adderesses is not cleared*/
+    13              1                      30608     always @(posedge clk or negedge rst_n) begin
+    14                                               	if (~rst_n) begin
+    15              1                       1239     		dout <= 8'b0;
+    16              1                       1239     			tx_valid <= 1'b0;
+    17              1                       1239     			addr_rd<=0;
+    18              1                       1239     			addr_wr<=0;
+    19              1                       1239     			i=0;
+    20              1                       1239     		for (i = 0; i < MEM_DEPTH; i=i+1) begin
+    20              2                     317184     
+    21              1                     317184     			mem [i] <= 1'b0;
+    22                                               		end
+    23                                               	
+    24                                               	end
+    25                                               
+    26                                               	else if (rx_valid) begin
+    27              1                      26408     			i=8'b1111_1111;
+    28                                               		if (din[9:8] == 2'b00) begin
+    29              1                       6653     			addr_wr <= din[7:0];
+    30              1                       6653     			tx_valid <= 0;
+    31                                               		end
+    32                                               		else if (din[9:8] == 2'b01) begin
+    33              1                       6588     			mem [addr_wr] <= din[7:0];
+    34              1                       6588     			tx_valid <= 0;
+    35                                               
+    36              1                       6588     		i=0;
+    37                                               		end
+    38                                               		else if (din[9:8] == 2'b10) begin
+    39              1                       6583     			addr_rd <= din[7:0];
+    40              1                       6583     			tx_valid <= 0;
+    41                                               		end
+    42                                               		else begin
+    43              1                       6584     			dout <= mem[addr_rd];
+    44              1                       6584     			tx_valid <= 1;
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                         94        94         0   100.00%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /\top#dut  --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                                      addr_rd[7-0]           1           1      100.00 
+                                      addr_wr[7-0]           1           1      100.00 
+                                               clk           1           1      100.00 
+                                          din[0-9]           1           1      100.00 
+                                         dout[7-0]           1           1      100.00 
+                                            i[8-0]           1           1      100.00 
+                                             rst_n           1           1      100.00 
+                                          rx_valid           1           1      100.00 
+                                          tx_valid           1           1      100.00 
+
+Total Node Count     =         47 
+Toggled Node Count   =         47 
+Untoggled Node Count =          0 
+
+Toggle Coverage      =     100.00% (94 of 94 bins)
+
+
+Total Coverage By Instance (filtered view): 100.00%
+
